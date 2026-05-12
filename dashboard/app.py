@@ -169,7 +169,7 @@ def hbar(df_,xcol,ycol,texts,color_hex,height=400,xtitle=""):
         textfont=dict(size=10,color="#e5e7eb"),
         hovertemplate="<b>%{y}</b><br>%{text}<extra></extra>"))
     fig.update_layout(**BG,height=height)
-    fig.update_xaxis(title=xtitle,showgrid=True,gridcolor="#111827")
+    fig.update_xaxes(title=xtitle,showgrid=True,gridcolor="#111827") # CORRIGIDO AQUI
     return fig
 
 # ── Market Share Treemap ──────────────────────────────────────────────────────
