@@ -21,7 +21,7 @@ O fluxo de dados segue a arquitetura **ELT (Extract, Load, Transform)**. As ferr
 * **Apache Airflow**: Configurei o Airflow como motor principal de orquestração. Automatizei a criação de *Directed Acyclic Graphs (DAGs)* para monitorar, agendar e orquestrar de forma confiável nossa migração.
 * **Snowflake (Data Warehouse / Destino)**: Criei e configurei espaços no Snowflake para escalabilidade na nuvem. É nesse ambiente em que ocorre o armazenamento final (Data Warehouse) integrado a todo ecossistema.
 * **dbt (Data Build Tool)**: Configurei o dbt para atuar nas transformações diretamente dentro do DW. Apliquei testes de qualidade, documentações vitais e boas práticas de modelagem de dados nas tabelas transformadas.
-* **Streamlit (Dashboard)**: Como última camada, com a responsabilidade final de visualização para o tomador de decisão, desenvolvi um painel dinâmico em **Streamlit** (em contrapartida a ferramentas padrão como o Looker Studio), conectando aos marts do DW e visualizando KPIs.
+* **Streamlit (Dashboard)**: Como última camada, com a responsabilidade final de visualização para o tomador de decisão, desenvolvi um painel dinâmico em **Streamlit** (em contrapartida a ferramentas padrão como o Looker Studio), conectando aos marts do DW e visualizando KPIs. Você pode acessar o Dashboard ao vivo [clicando aqui](https://novadrivedashboard.streamlit.app/).
 * **Docker & Docker Compose**: Utilizado para gerenciar eficientemente e isolar meu ambiente local (subida do Postgres nativo e instâncias de orquestração do Airflow).
 
 ---
