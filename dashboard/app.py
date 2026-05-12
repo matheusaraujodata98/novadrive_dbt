@@ -182,7 +182,10 @@ fig_tree=px.treemap(ve,path=[px.Constant("Rede NovaDrive"),"Estado"],values="Tot
 fig_tree.update_traces(textfont=dict(size=13),textinfo="label+percent parent",
     hovertemplate="<b>%{label}</b><br>Faturamento: R$ %{value:,.0f}<br>Ticket Médio: R$ %{color:,.0f}<extra></extra>",
     marker=dict(line=dict(color="#07070f",width=2)))
-fig_tree.update_layout(**BG,height=420,margin=dict(l=10,r=10,t=10,b=10),
+fig_tree.update_layout(
+    paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(color="#9ca3af",size=11),
+    height=420,margin=dict(l=10,r=10,t=10,b=10),
     coloraxis_colorbar=dict(title="Ticket R$",tickformat=",.0f"))
 st.plotly_chart(fig_tree,use_container_width=True)
 
