@@ -137,32 +137,25 @@ LAYOUT = dict(
     yaxis=dict(showgrid=True, gridcolor="#1f2937", zeroline=False)
 )
 
-# ── 1. Relatividade Analítica: Market Share (Gráfico de Rosca) ─────────────────
+# ── 1. Relatividade Analítica: Market Share (Treemap) ─────────────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">🍩 Market Share: Domínio de Faturamento por Estado</p>', unsafe_allow_html=True)
+st.markdown('<p class="stitle">🗺️ Market Share: Representatividade por Estado</p>', unsafe_allow_html=True)
 
-df_donut = ve.sort_values("Total_Vendas", ascending=False).copy()
-if len(df_donut) > 5:
-    top5 = df_donut.iloc[:5]
-    outros_val = df_donut.iloc[5:]["Total_Vendas"].sum()
-    outros_row = pd.DataFrame([{"Estado": "Outros", "Total_Vendas": outros_val}])
-    df_donut = pd.concat([top5, outros_row], ignore_index=True)
-
-fig_donut = px.pie(
-    df_donut, values="Total_Vendas", names="Estado", hole=0.65,
-    color_discrete_sequence=px.colors.sequential.Blues_r
+fig_tree = px.treemap(
+    ve,
+    path=[px.Constant("Faturamento Network"), "Estado"],
+    values="Total_Vendas",
+    color="Total_Vendas",
+    color_continuous_scale="Blues"
 )
-fig_donut.update_traces(
-    textposition='outside', textinfo='percent+label',
+fig_tree.update_traces(
+    textfont=dict(size=14),
+    textinfo="label+percent parent",
     hovertemplate="<b>%{label}</b><br>R$ %{value:,.2f}<extra></extra>",
-    marker=dict(line=dict(color='#0a0a0f', width=2))
+    marker=dict(line=dict(color='#0a0a0f', width=3))
 )
-fig_donut.add_annotation(
-    text=f"<b>R$ {tv/1e6:.1f}M</b><br>Faturamento",
-    x=0.5, y=0.5, font=dict(size=18, color="#E5E5EA"), showarrow=False
-)
-fig_donut.update_layout(**LAYOUT, height=450, showlegend=False)
-st.plotly_chart(fig_donut, use_container_width=True)
+fig_tree.update_layout(**LAYOUT, height=450, coloraxis_showscale=False)
+st.plotly_chart(fig_tree, use_container_width=True)
 
 # ── 2. Performance x Média da Rede (Barras com Linha de Target) ───────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
