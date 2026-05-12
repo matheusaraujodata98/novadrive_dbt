@@ -240,7 +240,7 @@ fig_sc=px.scatter(ve,x="Qtd_Pedidos",y="Total_Mi",size="Ticket_Medio",color="Tic
     text="Estado",color_continuous_scale=[[0,"#1e3a5f"],[0.5,"#3b82f6"],[1,"#f59e0b"]],
     labels={"Qtd_Pedidos":"Volume de Pedidos","Total_Mi":"Faturamento (R$ Mi)","Ticket_Medio":"Ticket Médio"})
 fig_sc.update_traces(textposition="top center",textfont=dict(size=9,color="#e5e7eb"),
-    marker=dict(line=dict(width=1,color="#ffffff15"),sizemin=8))
+    marker=dict(line=dict(width=1,color="rgba(255, 255, 255, 0.1)"),sizemin=8)) # CORREÇÃO AQUI
 fig_sc.add_hline(y=ve.Total_Mi.median(),line=dict(color="#374151",width=1,dash="dot"))
 fig_sc.add_vline(x=ve.Qtd_Pedidos.median(),line=dict(color="#374151",width=1,dash="dot"))
 fig_sc.update_layout(**BG,height=440,
