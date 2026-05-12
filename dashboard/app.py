@@ -32,14 +32,18 @@ import snowflake.connector
 
 @st.cache_resource
 def init_connection():
-    return snowflake.connector.connect(
-        user=st.secrets["snowflake"]["user"],
-        password=st.secrets["snowflake"]["password"],
-        account=st.secrets["snowflake"]["account"],
-        warehouse=st.secrets["snowflake"]["warehouse"],
-        database=st.secrets["snowflake"]["database"],
-        schema=st.secrets["snowflake"]["schema"]
-    )
+    try:
+        return snowflake.connector.connect(
+            user=st.secrets["snowflake"]["user"],
+            password=st.secrets["snowflake"]["password"],
+            account=st.secrets["snowflake"]["account"],
+            warehouse=st.secrets["snowflake"]["warehouse"],
+            database=st.secrets["snowflake"]["database"],
+            schema=st.secrets["snowflake"]["schema"]
+        )
+    except Exception as e:
+        st.error("⚠️ Segredos do Snowflake não encontrados no Streamlit Cloud. Por favor, configure a aba 'Secrets' nas configurações do seu App.")
+        st.stop()
 
 conn = init_connection()
 
