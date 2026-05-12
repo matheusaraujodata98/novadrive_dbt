@@ -155,33 +155,6 @@ fig3.update_layout(**LAYOUT,height=420)
 fig3.update_xaxes(title="R$ por Unidade",tickformat=",.0f") 
 st.plotly_chart(fig3,use_container_width=True)
 
-# ── Treemap: A Nova Visualização Otimizada ───────────────────────────────────
-st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">🗺️ Mapa Hierárquico de Faturamento (Treemap)</p>', unsafe_allow_html=True)
-st.caption("O tamanho do bloco reflete o Faturamento Total. A cor representa a saúde do Ticket Médio.")
-
-fig5 = px.treemap(
-    ve, 
-    path=[px.Constant("Brasil"), 'Estado'], 
-    values='Total_Vendas',
-    color='Ticket_Medio',
-    hover_data=['Qtd_Pedidos'],
-    color_continuous_scale=[[0,"#1e3a5f"],[0.5,"#3b82f6"],[1,"#f59e0b"]],
-    labels={'Ticket_Medio':'Ticket Médio', 'Total_Vendas':'Faturamento Total', 'Qtd_Pedidos':'Pedidos'}
-)
-fig5.update_traces(
-    marker=dict(line=dict(color='#0a0a0f', width=2)),
-    textfont=dict(size=14, color="#ffffff")
-)
-fig5.update_layout(
-    margin=dict(t=10, l=10, r=10, b=10),
-    paper_bgcolor="rgba(0,0,0,0)",
-    plot_bgcolor="rgba(0,0,0,0)",
-    height=450, 
-    coloraxis_colorbar=dict(title="R$",tickformat=",.0f")
-)
-st.plotly_chart(fig5, use_container_width=True)
-
 # ── Top 10 e Ranking Auxiliar ─────────────────────────────────────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
 g3,g4=st.columns([1.4,0.6])
