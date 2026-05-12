@@ -137,53 +137,62 @@ LAYOUT = dict(
     yaxis=dict(showgrid=True, gridcolor="#1f2937", zeroline=False)
 )
 
-# ── 1. Curva ABC: Concentração de Faturamento (Pareto) ────────────────────────
+# ── 1. Relatividade Analítica: Market Share (Gráfico de Rosca) ─────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">📊 Curva ABC: Concentração do Faturamento por Estado</p>', unsafe_allow_html=True)
+st.markdown('<p class="stitle">🍩 Market Share: Domínio de Faturamento por Estado</p>', unsafe_allow_html=True)
 
-df_pareto = ve.sort_values("Total_Vendas", ascending=False).copy()
-df_pareto["Perc"] = df_pareto["Total_Vendas"] / df_pareto["Total_Vendas"].sum() * 100
-df_pareto["Acumulado"] = df_pareto["Perc"].cumsum()
+df_donut = ve.sort_values("Total_Vendas", ascending=False).copy()
+if len(df_donut) > 5:
+    top5 = df_donut.iloc[:5]
+    outros_val = df_donut.iloc[5:]["Total_Vendas"].sum()
+    outros_row = pd.DataFrame([{"Estado": "Outros", "Total_Vendas": outros_val}])
+    df_donut = pd.concat([top5, outros_row], ignore_index=True)
 
-fig_pareto = go.Figure()
-fig_pareto.add_trace(go.Bar(
-    x=df_pareto["Estado"], y=df_pareto["Total_Vendas"],
-    name="Faturamento", marker_color="#3b82f6",
+fig_donut = px.pie(
+    df_donut, values="Total_Vendas", names="Estado", hole=0.65,
+    color_discrete_sequence=px.colors.sequential.Blues_r
+)
+fig_donut.update_traces(
+    textposition='outside', textinfo='percent+label',
+    hovertemplate="<b>%{label}</b><br>R$ %{value:,.2f}<extra></extra>",
+    marker=dict(line=dict(color='#0a0a0f', width=2))
+)
+fig_donut.add_annotation(
+    text=f"<b>R$ {tv/1e6:.1f}M</b><br>Faturamento",
+    x=0.5, y=0.5, font=dict(size=18, color="#E5E5EA"), showarrow=False
+)
+fig_donut.update_layout(**LAYOUT, height=450, showlegend=False)
+st.plotly_chart(fig_donut, use_container_width=True)
+
+# ── 2. Performance x Média da Rede (Barras com Linha de Target) ───────────────
+st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
+st.markdown('<p class="stitle">📈 Performance por Estado vs. Média Nacional</p>', unsafe_allow_html=True)
+
+media_faturamento = ve["Total_Vendas"].mean()
+
+fig_media = go.Figure()
+df_media = ve.sort_values("Total_Vendas", ascending=False)
+
+fig_media.add_trace(go.Bar(
+    x=df_media["Estado"],
+    y=df_media["Total_Vendas"],
+    name="Faturamento", marker_color="#8b5cf6",
+    text=df_media["Total_Vendas"].apply(lambda x: f"R$ {x/1e6:.1f}M"),
+    textposition="outside",
     hovertemplate="<b>%{x}</b><br>R$ %{y:,.2f}<extra></extra>"
 ))
-fig_pareto.add_trace(go.Scatter(
-    x=df_pareto["Estado"], y=df_pareto["Acumulado"],
-    name="% Acumulado", mode="lines+markers",
-    marker=dict(color="#f59e0b", size=8), line=dict(width=3),
-    yaxis="y2", hovertemplate="Acumulado: %{y:.1f}%<extra></extra>"
-))
-
-fig_pareto.update_layout(**LAYOUT)
-fig_pareto.update_layout(
-    height=450, showlegend=False,
-    yaxis=dict(title="Faturamento (R$)", showgrid=True, gridcolor="#1f2937", zeroline=False),
-    yaxis2=dict(title="% Acumulado", overlaying="y", side="right", range=[0, 110], showgrid=False)
+fig_media.add_shape(
+    type="line", line=dict(color="#f87171", width=2, dash="dash"),
+    x0=-0.5, x1=len(df_media)-0.5, y0=media_faturamento, y1=media_faturamento
 )
-st.plotly_chart(fig_pareto, use_container_width=True)
-
-# ── 2. Distribuição de Performance por Unidade (Boxplot) ──────────────────────
-st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">📍 Dispersão de Performance: Faturamento por Concessionária</p>', unsafe_allow_html=True)
-
-# Focamos nos 7 maiores estados para o gráfico não ficar esmagado
-top_est = df_pareto["Estado"].head(7).tolist()
-df_box = d[d["Estado"].isin(top_est)]
-
-fig_box = px.box(
-    df_box, x="Estado", y="Total_Vendas", color="Estado",
-    points="all", hover_data=["Concessionaria", "Ticket_Medio"],
-    color_discrete_sequence=px.colors.qualitative.Pastel
+fig_media.add_annotation(
+    x=len(df_media)-1 if len(df_media)>0 else 0, y=media_faturamento, text="Média da Rede",
+    showarrow=False, yshift=15, font=dict(color="#f87171", size=12)
 )
-fig_box.update_layout(**LAYOUT, height=450, showlegend=False)
-fig_box.update_yaxes(title="Faturamento por Unidade (R$)", showgrid=True, gridcolor="#1f2937")
-fig_box.update_xaxes(title="")
-fig_box.update_traces(hovertemplate="<b>%{customdata[0]}</b><br>Faturamento: R$ %{y:,.2f}<br>Ticket Médio: R$ %{customdata[1]:,.2f}<extra></extra>")
-st.plotly_chart(fig_box, use_container_width=True)
+
+fig_media.update_layout(**LAYOUT, height=450, showlegend=False)
+fig_media.update_yaxes(title="Faturamento (R$)", showgrid=True, gridcolor="#1f2937")
+st.plotly_chart(fig_media, use_container_width=True)
 
 # ── 3. Visão Micro: Top 10 Concessionárias (Vertical) & Ranking ───────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
