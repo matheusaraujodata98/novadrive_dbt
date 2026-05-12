@@ -137,34 +137,52 @@ LAYOUT = dict(
     yaxis=dict(showgrid=True, gridcolor="#1f2937", zeroline=False)
 )
 
-# ── 1. Visão Macro: Distribuição de Faturamento (Treemap) ─────────────────────
+# ── 1. Curva ABC: Concentração de Faturamento (Pareto) ────────────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">🗺️ Visão Macro: Participação de Faturamento por Estado</p>', unsafe_allow_html=True)
+st.markdown('<p class="stitle">📊 Curva ABC: Concentração do Faturamento por Estado</p>', unsafe_allow_html=True)
 
-fig_tree = px.treemap(
-    ve, path=[px.Constant("Brasil"), "Estado"], values="Total_Vendas",
-    color="Total_Vendas", color_continuous_scale="Blues",
-    custom_data=["Qtd_Pedidos", "Ticket_Medio"]
-)
-fig_tree.update_traces(
-    hovertemplate="<b>%{label}</b><br>Faturamento: R$ %{value:,.2f}<br>Pedidos: %{customdata[0]}<br>Ticket: R$ %{customdata[1]:,.2f}<extra></extra>",
-    textinfo="label+value+percent parent"
-)
-fig_tree.update_layout(**LAYOUT, height=450)
-st.plotly_chart(fig_tree, use_container_width=True)
+df_pareto = ve.sort_values("Total_Vendas", ascending=False).copy()
+df_pareto["Perc"] = df_pareto["Total_Vendas"] / df_pareto["Total_Vendas"].sum() * 100
+df_pareto["Acumulado"] = df_pareto["Perc"].cumsum()
 
-# ── 2. Relação: Eficiência vs Volume ──────────────────────────────────────────
+fig_pareto = go.Figure()
+fig_pareto.add_trace(go.Bar(
+    x=df_pareto["Estado"], y=df_pareto["Total_Vendas"],
+    name="Faturamento", marker_color="#3b82f6",
+    hovertemplate="<b>%{x}</b><br>R$ %{y:,.2f}<extra></extra>"
+))
+fig_pareto.add_trace(go.Scatter(
+    x=df_pareto["Estado"], y=df_pareto["Acumulado"],
+    name="% Acumulado", mode="lines+markers",
+    marker=dict(color="#f59e0b", size=8), line=dict(width=3),
+    yaxis="y2", hovertemplate="Acumulado: %{y:.1f}%<extra></extra>"
+))
+
+fig_pareto.update_layout(
+    **LAYOUT, height=450, showlegend=False,
+    yaxis=dict(title="Faturamento (R$)", showgrid=True, gridcolor="#1f2937"),
+    yaxis2=dict(title="% Acumulado", overlaying="y", side="right", range=[0, 110], showgrid=False)
+)
+st.plotly_chart(fig_pareto, use_container_width=True)
+
+# ── 2. Distribuição de Performance por Unidade (Boxplot) ──────────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">⚖️ Eficiência (Ticket Médio) vs Escala (Volume de Pedidos)</p>', unsafe_allow_html=True)
+st.markdown('<p class="stitle">📍 Dispersão de Performance: Faturamento por Concessionária</p>', unsafe_allow_html=True)
 
-fig_scatter = px.scatter(
-    ve, x="Qtd_Pedidos", y="Ticket_Medio", size="Total_Vendas", color="Estado",
-    hover_name="Estado", size_max=45, template="plotly_dark",
-    labels={"Qtd_Pedidos": "Quantidade de Pedidos", "Ticket_Medio": "Ticket Médio (R$)"}
+# Focamos nos 7 maiores estados para o gráfico não ficar esmagado
+top_est = df_pareto["Estado"].head(7).tolist()
+df_box = d[d["Estado"].isin(top_est)]
+
+fig_box = px.box(
+    df_box, x="Estado", y="Total_Vendas", color="Estado",
+    points="all", hover_data=["Concessionaria", "Ticket_Medio"],
+    color_discrete_sequence=px.colors.qualitative.Pastel
 )
-fig_scatter.update_layout(**LAYOUT, height=450, showlegend=False)
-fig_scatter.update_xaxes(showgrid=True, gridcolor="#1f2937")
-st.plotly_chart(fig_scatter, use_container_width=True)
+fig_box.update_layout(**LAYOUT, height=450, showlegend=False)
+fig_box.update_yaxes(title="Faturamento por Unidade (R$)", showgrid=True, gridcolor="#1f2937")
+fig_box.update_xaxes(title="")
+fig_box.update_traces(hovertemplate="<b>%{customdata[0]}</b><br>Faturamento: R$ %{y:,.2f}<br>Ticket Médio: R$ %{customdata[1]:,.2f}<extra></extra>")
+st.plotly_chart(fig_box, use_container_width=True)
 
 # ── 3. Visão Micro: Top 10 Concessionárias (Vertical) & Ranking ───────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
