@@ -169,7 +169,7 @@ def hbar(df_,xcol,ycol,texts,color_hex,height=400,xtitle=""):
         textfont=dict(size=10,color="#e5e7eb"),
         hovertemplate="<b>%{y}</b><br>%{text}<extra></extra>"))
     fig.update_layout(**BG,height=height)
-    fig.update_xaxes(title=xtitle,showgrid=True,gridcolor="#111827") # CORRIGIDO AQUI
+    fig.update_xaxes(title=xtitle,showgrid=True,gridcolor="#111827") 
     return fig
 
 # ── Market Share Treemap ──────────────────────────────────────────────────────
@@ -227,7 +227,7 @@ fig_tk.add_vline(x=tk,line=dict(color="#f9fafb",width=1,dash="dot"))
 fig_tk.add_annotation(x=tk,y=0,text=f"Média R$ {tk:,.0f}",showarrow=False,
     xshift=50,font=dict(color="#9ca3af",size=10))
 fig_tk.update_layout(**BG,height=440)
-fig_tk.update_xaxis(title="Ticket Médio (R$)",tickformat=",.0f")
+fig_tk.update_xaxes(title="Ticket Médio (R$)",tickformat=",.0f") 
 st.plotly_chart(fig_tk,use_container_width=True)
 
 # ── Scatter Estratégico ───────────────────────────────────────────────────────
