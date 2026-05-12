@@ -1,4 +1,5 @@
 streamlit
 pandas
 plotly
-matplotlibsnowflake-connector-python
+matplotlib
+snowflake-connector-python
