@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import plotly.graph_objects as go
 
 st.set_page_config(layout="wide", page_title="NovaDrive Motors")
 
@@ -35,25 +36,22 @@ st.markdown(f"""<div class="hero">
     <span style="background:#3b82f6;color:#fff;padding:3px 12px;border-radius:20px;font-size:11px;font-weight:600;margin-left:10px">SISTEMA DE GESTAO DE VENDAS</span>
   </div>
 </div>
-<p style="color:#636366;margin:0;font-size:12px">{df.ESTADO.nunique()} estados monitorizados &bull; Dados reais &bull; Atualizado agora</p>
+<p style="color:#636366;margin:0;font-size:12px">{df.ESTADO.nunique()} estados &bull; Dados reais &bull; Atualizado agora</p>
 </div>""", unsafe_allow_html=True)
 
 sel = st.multiselect("Selecionar Estados para Analise", sorted(df.ESTADO.unique()), default=sorted(df.ESTADO.unique()))
-
 d = df[df.ESTADO.isin(sel)] if sel else df.iloc[0:0]
 
 if d.empty:
-    st.warning("Selecione pelo menos um estado para carregar os indicadores.")
+    st.warning("Selecione pelo menos um estado.")
     st.stop()
 
 ve = d.groupby("ESTADO", as_index=False).agg(TOTAL_VENDAS=("TOTAL", "sum"), QTD_PEDIDOS=("QUANTIDADE", "sum"))
 ve["TICKET_MEDIO"] = ve["TOTAL_VENDAS"] / ve["QTD_PEDIDOS"]
 ve["TOTAL_MI"] = ve["TOTAL_VENDAS"] / 1e6
-tv = d.TOTAL.sum()
-tq = d.QUANTIDADE.sum()
-tk = tv / max(tq, 1)
-top_estado = ve.loc[ve.TOTAL_VENDAS.idxmax(), "ESTADO"] if len(ve) else "-"
-topv = ve.TOTAL_VENDAS.max() if len(ve) else 0
+tv = d.TOTAL.sum(); tq = d.QUANTIDADE.sum(); tk = tv / max(tq, 1)
+top_estado = ve.loc[ve.TOTAL_VENDAS.idxmax(), "ESTADO"]
+topv = ve.TOTAL_VENDAS.max()
 top3 = ve.nlargest(3, "TOTAL_VENDAS")
 pct = top3.TOTAL_VENDAS.sum() / tv * 100
 mxtk = ve.loc[ve.TICKET_MEDIO.idxmax()]
@@ -76,45 +74,72 @@ st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
 st.markdown('<p class="stitle">Narrativa de Performance</p>', unsafe_allow_html=True)
 i1, i2 = st.columns(2)
 insights = [
-    (i1, "#1a2744", "#2d4a7a", "#60a5fa", "1o", f"O estado de <span style='color:#60a5fa'>{top_estado}</span> domina o ranking com <span style='color:#60a5fa'>R$ {topv/1e6:.1f}M</span> em faturamento."),
+    (i1, "#1a2744", "#2d4a7a", "#60a5fa", "1o", f"<span style='color:#60a5fa'>{top_estado}</span> domina o ranking com <span style='color:#60a5fa'>R$ {topv/1e6:.1f}M</span> em faturamento."),
     (i1, "#1a3a2a", "#2d6a4a", "#34d399", "Top3", f"<span style='color:#34d399'>{', '.join(top3.ESTADO)}</span> somam <span style='color:#34d399'>{pct:.0f}%</span> do faturamento total."),
-    (i2, "#2a1a3a", "#4a2d6a", "#a78bfa", "Ticket", f"<span style='color:#a78bfa'>{mxtk.ESTADO}</span> tem a operacao mais premium: <span style='color:#a78bfa'>R$ {mxtk.TICKET_MEDIO:,.0f}</span>/pedido."),
-    (i2, "#2a1a1a", "#6a2d2d", "#f87171", "Volume", f"<span style='color:#f87171'>{mvol.ESTADO}</span> lidera em volume com <span style='color:#f87171'>{int(mvol.QTD_PEDIDOS):,}</span> pedidos."),
+    (i2, "#2a1a3a", "#4a2d6a", "#a78bfa", "Ticket", f"<span style='color:#a78bfa'>{mxtk.ESTADO}</span> tem operacao mais premium: <span style='color:#a78bfa'>R$ {mxtk.TICKET_MEDIO:,.0f}</span>/pedido."),
+    (i2, "#2a1a1a", "#6a2d2d", "#f87171", "Volume", f"<span style='color:#f87171'>{mvol.ESTADO}</span> lidera com <span style='color:#f87171'>{int(mvol.QTD_PEDIDOS):,}</span> pedidos."),
 ]
 for col, bg, border, clr, icon, txt in insights:
     col.markdown(f'<div class="ins" style="background:{bg};border:1px solid {border};color:#c8d6f0">'
         f'<span style="font-size:16px;font-weight:700;color:{clr}">{icon}</span>'
         f'<span style="color:#c8d6f0">{txt}</span></div>', unsafe_allow_html=True)
 
+LAYOUT = dict(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(color="#9ca3af", size=11), margin=dict(l=10, r=80, t=10, b=10),
+    xaxis=dict(showgrid=True, gridcolor="#1f2937", zeroline=False),
+    yaxis=dict(showgrid=False, tickfont=dict(size=10)))
+
+def hbar(df_, x, y, txt, cor, height=400):
+    cor_rgba = f"rgba({int(cor[1:3],16)},{int(cor[3:5],16)},{int(cor[5:7],16)},0.33)"
+    fig = go.Figure(go.Bar(x=df_[x], y=df_[y], orientation="h",
+        marker=dict(color=df_[x], colorscale=[[0, cor_rgba], [1, cor]], showscale=False),
+        text=txt, textposition="outside", textfont=dict(size=10, color="#e5e5ea"),
+        hovertemplate="<b>%{y}</b><br>%{text}<extra></extra>"))
+    fig.update_layout(**LAYOUT, height=height)
+    return fig
+
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
 g1, g2 = st.columns(2)
 
 with g1:
-    st.markdown('<p class="stitle">Faturamento por Estado (R$ Mi)</p>', unsafe_allow_html=True)
-    fat = ve.sort_values("TOTAL_VENDAS", ascending=False).copy()
-    fat["R$ Mi"] = fat["TOTAL_MI"].round(1)
-    st.bar_chart(fat.set_index("ESTADO")[["R$ Mi"]], color="#3b82f6", height=420)
+    st.markdown('<p class="stitle">Faturamento por Estado</p>', unsafe_allow_html=True)
+    fat = ve.sort_values("TOTAL_VENDAS", ascending=True)
+    fig = hbar(fat, "TOTAL_MI", "ESTADO", [f"R$ {v:.1f}M" for v in fat.TOTAL_MI], "#3b82f6", 420)
+    fig.update_xaxes(title="R$ Milhoes")
+    st.plotly_chart(fig, use_container_width=True)
 
 with g2:
     st.markdown('<p class="stitle">Pedidos por Estado</p>', unsafe_allow_html=True)
-    ped = ve.sort_values("QTD_PEDIDOS", ascending=False).copy()
-    ped["Pedidos"] = ped["QTD_PEDIDOS"]
-    st.bar_chart(ped.set_index("ESTADO")[["Pedidos"]], color="#10b981", height=420)
+    ped = ve.sort_values("QTD_PEDIDOS", ascending=True)
+    fig = hbar(ped, "QTD_PEDIDOS", "ESTADO", [f"{int(v):,}" for v in ped.QTD_PEDIDOS], "#10b981", 420)
+    fig.update_xaxes(title="Total de Pedidos")
+    st.plotly_chart(fig, use_container_width=True)
 
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">Ticket Medio por Estado (R$ mil)</p>', unsafe_allow_html=True)
-tkt = ve.sort_values("TICKET_MEDIO", ascending=False).copy()
-tkt["R$ Mil"] = (tkt["TICKET_MEDIO"] / 1000).round(1)
-st.bar_chart(tkt.set_index("ESTADO")[["R$ Mil"]], color="#f59e0b", height=380)
+st.markdown('<p class="stitle">Ticket Medio por Estado</p>', unsafe_allow_html=True)
+tkt = ve.sort_values("TICKET_MEDIO", ascending=True)
+fig3 = go.Figure(go.Bar(x=tkt["TICKET_MEDIO"], y=tkt["ESTADO"], orientation="h",
+    marker=dict(color=tkt["TICKET_MEDIO"],
+        colorscale=[[0, "#064e3b"], [0.4, "#f59e0b"], [1, "#ef4444"]],
+        showscale=True, colorbar=dict(title="R$", tickformat=",.0f", len=0.8)),
+    text=[f"R$ {v:,.0f}" for v in tkt["TICKET_MEDIO"]],
+    textposition="outside", textfont=dict(size=10, color="#e5e5ea"),
+    hovertemplate="<b>%{y}</b><br>Ticket: R$ %{x:,.0f}<extra></extra>"))
+fig3.update_layout(**LAYOUT, height=420)
+fig3.update_xaxes(title="R$ por Venda", tickformat=",.0f")
+st.plotly_chart(fig3, use_container_width=True)
 
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
 g3, g4 = st.columns([1.4, 0.6])
 
 with g3:
-    st.markdown('<p class="stitle">Top 10 Concessionarias (R$ Mi)</p>', unsafe_allow_html=True)
+    st.markdown('<p class="stitle">Top 10 Concessionarias</p>', unsafe_allow_html=True)
     t10 = d.nlargest(10, "TOTAL").copy()
-    t10["R$ Mi"] = (t10["TOTAL"] / 1e6).round(1)
-    st.bar_chart(t10.set_index("CONCESSIONARIA")[["R$ Mi"]], color="#8b5cf6", height=380)
+    t10["MI"] = (t10["TOTAL"] / 1e6).round(1)
+    t10 = t10.sort_values("TOTAL", ascending=True)
+    fig4 = hbar(t10, "MI", "CONCESSIONARIA", [f"R$ {v:.1f}M" for v in t10.MI], "#8b5cf6", 380)
+    fig4.update_xaxes(title="R$ Milhoes")
+    st.plotly_chart(fig4, use_container_width=True)
 
 with g4:
     st.markdown('<p class="stitle">Ranking de Estados</p>', unsafe_allow_html=True)
