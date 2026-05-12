@@ -243,12 +243,14 @@ fig_sc.update_traces(textposition="top center",textfont=dict(size=9,color="#e5e7
     marker=dict(line=dict(width=1,color="rgba(255, 255, 255, 0.1)"),sizemin=8)) # CORREÇÃO AQUI
 fig_sc.add_hline(y=ve.Total_Mi.median(),line=dict(color="#374151",width=1,dash="dot"))
 fig_sc.add_vline(x=ve.Qtd_Pedidos.median(),line=dict(color="#374151",width=1,dash="dot"))
-fig_sc.update_layout(**BG,height=440,
-    xaxis=dict(title="Volume de Pedidos",showgrid=True,gridcolor="#111827"),
-    yaxis=dict(title="Faturamento (R$ Mi)",showgrid=True,gridcolor="#111827"),
-    coloraxis_colorbar=dict(title="Ticket R$",tickformat=",.0f"),
-    margin=dict(l=10,r=80,t=30,b=10))
-st.plotly_chart(fig_sc,use_container_width=True)
+fig_sc.update_layout(**BG)
+fig_sc.update_layout(
+    height=440,
+    coloraxis_colorbar=dict(title="Ticket R$", tickformat=",.0f"),
+    margin=dict(l=10, r=80, t=30, b=10)
+)
+fig_sc.update_xaxes(title="Volume de Pedidos", showgrid=True, gridcolor="#111827")
+fig_sc.update_yaxes(title="Faturamento (R$ Mi)", showgrid=True, gridcolor="#111827")
 
 # ── Top 10 + Ranking ──────────────────────────────────────────────────────────
 st.markdown('<div class="dv"></div>',unsafe_allow_html=True)
