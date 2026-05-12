@@ -1,0 +1,235 @@
+[0m12:38:25.950896 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86dfb8d730>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e01458b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86e214f9b0>]}
+
+
+============================== 12:38:25.954467 | 0e054209-1b59-47ce-ab54-6a983c094946 ==============================
+[0m12:38:25.954467 [info ] [MainThread]: Running with dbt=1.11.9
+[0m12:38:25.955033 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'use_colors': 'True', 'target_path': 'None', 'profiles_dir': '/home/matheus/.dbt', 'no_print': 'None', 'introspect': 'True', 'warn_error': 'None', 'indirect_selection': 'eager', 'debug': 'False', 'cache_selected_only': 'False', 'quiet': 'False', 'use_experimental_parser': 'False', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'partial_parse': 'True', 'static_parser': 'True', 'empty': 'None', 'printer_width': '80', 'log_cache_events': 'False', 'invocation_command': 'dbt debug', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'write_json': 'True', 'log_path': 'logs'}
+[0m12:38:25.968000 [info ] [MainThread]: dbt version: 1.11.9
+[0m12:38:25.968555 [info ] [MainThread]: python version: 3.12.3
+[0m12:38:25.969009 [info ] [MainThread]: python path: /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/venv/bin/python3
+[0m12:38:25.969448 [info ] [MainThread]: os info: Linux-6.17.0-22-generic-x86_64-with-glibc2.39
+[0m12:38:25.974253 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.bigquery'
+[0m12:38:25.975548 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.bigquery'
+[0m12:38:25.977847 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.duckdb'
+[0m12:38:25.978708 [info ] [MainThread]: Using profiles dir at /home/matheus/.dbt
+[0m12:38:25.979207 [info ] [MainThread]: Using profiles.yml file at /home/matheus/.dbt/profiles.yml
+[0m12:38:25.979644 [info ] [MainThread]: Using dbt_project.yml file at /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml
+[0m12:38:25.980100 [info ] [MainThread]: Configuration:
+[0m12:38:25.980498 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m12:38:25.980922 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m12:38:25.981326 [info ] [MainThread]: Required dependencies:
+[0m12:38:25.981768 [debug] [MainThread]: Executing "git --help"
+[0m12:38:25.984873 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:38:25.985513 [debug] [MainThread]: STDERR: "b''"
+[0m12:38:25.985918 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:38:25.986324 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m12:38:25.986786 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m12:38:25.987210 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "dbt_example", target "dev" invalid: Runtime Error
+    Could not find adapter type bigquery!
+
+Runtime Error
+  Credentials in profile "dbt_example1", target "dev" invalid: Runtime Error
+    Could not find adapter type bigquery!
+
+Runtime Error
+  Credentials in profile "dbthandsON", target "dev" invalid: Runtime Error
+    Could not find adapter type duckdb!
+
+
+[0m12:38:25.987660 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml> not found
+
+[0m12:38:25.989178 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.08892347, "process_in_blocks": "43128", "process_kernel_time": 0.16494, "process_mem_max_rss": "102828", "process_out_blocks": "16", "process_user_time": 1.150512}
+[0m12:38:25.989783 [debug] [MainThread]: Command `dbt debug` failed at 12:38:25.989666 after 0.09 seconds
+[0m12:38:25.990291 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86df453ad0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86df4d8bc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7d86df288a70>]}
+[0m12:38:25.990841 [debug] [MainThread]: Flushing usage events
+[0m12:38:26.519008 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:43:39.934071 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7321ccea3080>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7321cca9a7e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7321cc903f20>]}
+
+
+============================== 12:43:39.937761 | 93337b6c-76e6-4834-884e-b23b2cbf42f2 ==============================
+[0m12:43:39.937761 [info ] [MainThread]: Running with dbt=1.11.9
+[0m12:43:39.938271 [debug] [MainThread]: running dbt with arguments {'write_json': 'True', 'use_colors': 'True', 'indirect_selection': 'eager', 'introspect': 'True', 'send_anonymous_usage_stats': 'True', 'empty': 'None', 'printer_width': '80', 'static_parser': 'True', 'log_path': 'logs', 'fail_fast': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'partial_parse': 'True', 'no_print': 'None', 'profiles_dir': '/home/matheus/.dbt', 'cache_selected_only': 'False', 'version_check': 'True', 'target_path': 'None', 'warn_error': 'None', 'use_experimental_parser': 'False', 'log_format': 'default', 'debug': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'invocation_command': 'dbt init dbt_transformations'}
+[0m12:43:39.951780 [debug] [MainThread]: Starter project path: /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m12:43:39.955079 [info ] [MainThread]: 
+Your new dbt project "dbt_transformations" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:43:39.955548 [info ] [MainThread]: Setting up your profile.
+[0m12:45:14.683160 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m12:45:14.683607 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m12:45:14.683950 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m12:46:38.392370 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79ca616964e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79ca6252d4c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79ca61696ea0>]}
+
+
+============================== 12:46:38.395198 | 6b9e4029-8e10-40e7-ba93-f8dfcb410c1f ==============================
+[0m12:46:38.395198 [info ] [MainThread]: Running with dbt=1.11.9
+[0m12:46:38.395709 [debug] [MainThread]: running dbt with arguments {'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'static_parser': 'True', 'use_colors': 'True', 'fail_fast': 'False', 'write_json': 'True', 'version_check': 'True', 'log_cache_events': 'False', 'invocation_command': 'dbt init dbt_transformations', 'log_path': 'logs', 'cache_selected_only': 'False', 'quiet': 'False', 'introspect': 'True', 'no_print': 'None', 'printer_width': '80', 'profiles_dir': '/home/matheus/.dbt', 'warn_error': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'indirect_selection': 'eager', 'use_experimental_parser': 'False', 'debug': 'False', 'target_path': 'None', 'partial_parse': 'True', 'empty': 'None'}
+[0m12:46:38.403401 [info ] [MainThread]: A project called dbt_transformations already exists here.
+[0m12:46:38.405351 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.06314844, "process_in_blocks": "32", "process_kernel_time": 0.137707, "process_mem_max_rss": "102792", "process_out_blocks": "8", "process_user_time": 1.174506}
+[0m12:46:38.405826 [debug] [MainThread]: Command `dbt init` succeeded at 12:46:38.405734 after 0.06 seconds
+[0m12:46:38.406168 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79ca624a3f20>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79ca615f68d0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79ca619a5a60>]}
+[0m12:46:38.406557 [debug] [MainThread]: Flushing usage events
+[0m12:46:38.926376 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:46:53.749473 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eef32d53b30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eef3269ccb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eef30fa72c0>]}
+
+
+============================== 12:46:53.751947 | 28558e1b-1db8-4219-a91f-7ee967f750c4 ==============================
+[0m12:46:53.751947 [info ] [MainThread]: Running with dbt=1.11.9
+[0m12:46:53.752426 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt init dbt_transformations', 'printer_width': '80', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'indirect_selection': 'eager', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'use_colors': 'True', 'fail_fast': 'False', 'warn_error': 'None', 'quiet': 'False', 'no_print': 'None', 'partial_parse': 'True', 'target_path': 'None', 'introspect': 'True', 'log_format': 'default', 'static_parser': 'True', 'write_json': 'True', 'empty': 'None', 'log_path': 'logs', 'profiles_dir': '/home/matheus/.dbt', 'version_check': 'True', 'debug': 'False'}
+[0m12:46:53.759597 [debug] [MainThread]: Starter project path: /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/venv/lib/python3.12/site-packages/dbt/include/starter_project
+[0m12:46:53.762700 [info ] [MainThread]: 
+Your new dbt project "dbt_transformations" was created!
+
+For more information on how to configure the profiles.yml file,
+please consult the dbt documentation here:
+
+  https://docs.getdbt.com/docs/configure-your-profile
+
+One more thing:
+
+Need help? Don't hesitate to reach out to us via GitHub issues or on Slack:
+
+  https://community.getdbt.com/
+
+Happy modeling!
+
+[0m12:46:53.763248 [info ] [MainThread]: Setting up your profile.
+[0m12:46:56.682346 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m12:46:56.682842 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m12:46:56.683213 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m12:47:58.293167 [info ] [MainThread]: Profile dbt_transformations written to /home/matheus/.dbt/profiles.yml using target's profile_template.yml and your supplied values. Run 'dbt debug' to validate the connection.
+[0m12:47:58.294366 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 64.59536, "process_in_blocks": "0", "process_kernel_time": 0.171783, "process_mem_max_rss": "128288", "process_out_blocks": "80", "process_user_time": 1.338313}
+[0m12:47:58.295250 [debug] [MainThread]: Command `dbt init` succeeded at 12:47:58.295115 after 64.60 seconds
+[0m12:47:58.295828 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eef2ea59eb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eef32d53b30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7eef2e628fb0>]}
+[0m12:47:58.296332 [debug] [MainThread]: Flushing usage events
+[0m12:47:58.815342 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:48:18.130646 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x797358be9f70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79735819f800>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x797358763950>]}
+
+
+============================== 12:48:18.133330 | e622a1db-9f2a-4968-8afc-13632fc26390 ==============================
+[0m12:48:18.133330 [info ] [MainThread]: Running with dbt=1.11.9
+[0m12:48:18.133863 [debug] [MainThread]: running dbt with arguments {'cache_selected_only': 'False', 'send_anonymous_usage_stats': 'True', 'log_format': 'default', 'printer_width': '80', 'static_parser': 'True', 'no_print': 'None', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'warn_error': 'None', 'quiet': 'False', 'version_check': 'True', 'use_experimental_parser': 'False', 'invocation_command': 'dbt debug', 'log_cache_events': 'False', 'profiles_dir': '/home/matheus/.dbt', 'log_path': 'logs', 'indirect_selection': 'eager', 'partial_parse': 'True', 'write_json': 'True', 'debug': 'False', 'fail_fast': 'False', 'use_colors': 'True', 'introspect': 'True', 'empty': 'None'}
+[0m12:48:18.142730 [info ] [MainThread]: dbt version: 1.11.9
+[0m12:48:18.143207 [info ] [MainThread]: python version: 3.12.3
+[0m12:48:18.143631 [info ] [MainThread]: python path: /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/venv/bin/python3
+[0m12:48:18.144073 [info ] [MainThread]: os info: Linux-6.17.0-22-generic-x86_64-with-glibc2.39
+[0m12:48:18.149980 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.bigquery'
+[0m12:48:18.151831 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.bigquery'
+[0m12:48:18.356372 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m12:48:18.356857 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m12:48:18.357195 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m12:48:18.471606 [info ] [MainThread]: Error importing adapter: No module named 'dbt.adapters.duckdb'
+[0m12:48:18.472313 [info ] [MainThread]: Using profiles dir at /home/matheus/.dbt
+[0m12:48:18.472720 [info ] [MainThread]: Using profiles.yml file at /home/matheus/.dbt/profiles.yml
+[0m12:48:18.473096 [info ] [MainThread]: Using dbt_project.yml file at /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml
+[0m12:48:18.473472 [info ] [MainThread]: Configuration:
+[0m12:48:18.473845 [info ] [MainThread]:   profiles.yml file [[31mERROR invalid[0m]
+[0m12:48:18.474189 [info ] [MainThread]:   dbt_project.yml file [[31mERROR not found[0m]
+[0m12:48:18.474529 [info ] [MainThread]: Required dependencies:
+[0m12:48:18.474906 [debug] [MainThread]: Executing "git --help"
+[0m12:48:18.476996 [debug] [MainThread]: STDOUT: "b"usage: git [-v | --version] [-h | --help] [-C <path>] [-c <name>=<value>]\n           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]\n           [-p | --paginate | -P | --no-pager] [--no-replace-objects] [--bare]\n           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]\n           [--config-env=<name>=<envvar>] <command> [<args>]\n\nThese are common Git commands used in various situations:\n\nstart a working area (see also: git help tutorial)\n   clone     Clone a repository into a new directory\n   init      Create an empty Git repository or reinitialize an existing one\n\nwork on the current change (see also: git help everyday)\n   add       Add file contents to the index\n   mv        Move or rename a file, a directory, or a symlink\n   restore   Restore working tree files\n   rm        Remove files from the working tree and from the index\n\nexamine the history and state (see also: git help revisions)\n   bisect    Use binary search to find the commit that introduced a bug\n   diff      Show changes between commits, commit and working tree, etc\n   grep      Print lines matching a pattern\n   log       Show commit logs\n   show      Show various types of objects\n   status    Show the working tree status\n\ngrow, mark and tweak your common history\n   branch    List, create, or delete branches\n   commit    Record changes to the repository\n   merge     Join two or more development histories together\n   rebase    Reapply commits on top of another base tip\n   reset     Reset current HEAD to the specified state\n   switch    Switch branches\n   tag       Create, list, delete or verify a tag object signed with GPG\n\ncollaborate (see also: git help workflows)\n   fetch     Download objects and refs from another repository\n   pull      Fetch from and integrate with another repository or a local branch\n   push      Update remote refs along with associated objects\n\n'git help -a' and 'git help -g' list available subcommands and some\nconcept guides. See 'git help <command>' or 'git help <concept>'\nto read about a specific subcommand or concept.\nSee 'git help git' for an overview of the system.\n""
+[0m12:48:18.477477 [debug] [MainThread]: STDERR: "b''"
+[0m12:48:18.477886 [info ] [MainThread]:  - git [[32mOK found[0m]
+
+[0m12:48:18.478234 [info ] [MainThread]: Connection test skipped since no profile was found
+[0m12:48:18.478654 [info ] [MainThread]: [31m2 checks failed:[0m
+[0m12:48:18.479047 [info ] [MainThread]: Could not load dbt_project.yml
+Profile loading failed for the following reason:
+Runtime Error
+  Credentials in profile "dbt_example", target "dev" invalid: Runtime Error
+    Could not find adapter type bigquery!
+
+Runtime Error
+  Credentials in profile "dbt_example1", target "dev" invalid: Runtime Error
+    Could not find adapter type bigquery!
+
+Runtime Error
+  Credentials in profile "dbthandsON", target "dev" invalid: Runtime Error
+    Could not find adapter type duckdb!
+
+
+[0m12:48:18.479423 [info ] [MainThread]: Project loading failed for the following reason:
+ project path </home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml> not found
+
+[0m12:48:18.480972 [debug] [MainThread]: Resource report: {"command_name": "debug", "command_success": false, "command_wall_clock_time": 0.40299892, "process_in_blocks": "56", "process_kernel_time": 0.177136, "process_mem_max_rss": "129516", "process_out_blocks": "16", "process_user_time": 1.477142}
+[0m12:48:18.482409 [debug] [MainThread]: Command `dbt debug` failed at 12:48:18.482187 after 0.40 seconds
+[0m12:48:18.483160 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x797356b209e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x797355e2ae10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x79735967e0f0>]}
+[0m12:48:18.484031 [debug] [MainThread]: Flushing usage events
+[0m12:48:18.961705 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m12:49:26.329071 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b2c233d580>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b2c169e810>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b2c1f93800>]}
+
+
+============================== 12:49:26.331955 | fdc3d753-6946-4f8c-8e93-174e1530f539 ==============================
+[0m12:49:26.331955 [info ] [MainThread]: Running with dbt=1.11.9
+[0m12:49:26.332533 [debug] [MainThread]: running dbt with arguments {'quiet': 'False', 'partial_parse': 'True', 'printer_width': '80', 'indirect_selection': 'eager', 'target_path': 'None', 'write_json': 'True', 'log_format': 'default', 'log_path': 'logs', 'warn_error': 'None', 'debug': 'False', 'no_print': 'None', 'profiles_dir': '/home/matheus/.dbt', 'use_experimental_parser': 'False', 'cache_selected_only': 'False', 'static_parser': 'True', 'version_check': 'True', 'send_anonymous_usage_stats': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'empty': 'None', 'use_colors': 'True', 'log_cache_events': 'False', 'introspect': 'True', 'fail_fast': 'False', 'invocation_command': 'dbt init dbt_transformations'}
+[0m12:49:26.339726 [info ] [MainThread]: A project called dbt_transformations already exists here.
+[0m12:49:26.340561 [debug] [MainThread]: Resource report: {"command_name": "init", "command_success": true, "command_wall_clock_time": 0.062104505, "process_in_blocks": "0", "process_kernel_time": 0.135331, "process_mem_max_rss": "102812", "process_out_blocks": "8", "process_user_time": 1.164853}
+[0m12:49:26.341027 [debug] [MainThread]: Command `dbt init` succeeded at 12:49:26.340941 after 0.06 seconds
+[0m12:49:26.341369 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b2c5933f50>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b2c16cdf10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73b2c1dc3b30>]}
+[0m12:49:26.341747 [debug] [MainThread]: Flushing usage events
+[0m12:49:26.869021 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m11:43:53.465393 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75cf8702a030>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75cf8705be90>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75cf8702a7e0>]}
+
+
+============================== 11:43:53.469221 | e2531558-f366-43d3-bb14-5b51dfdd07dd ==============================
+[0m11:43:53.469221 [info ] [MainThread]: Running with dbt=1.11.9
+[0m11:43:53.469773 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'use_colors': 'True', 'log_path': 'logs', 'send_anonymous_usage_stats': 'True', 'target_path': 'None', 'version_check': 'True', 'fail_fast': 'False', 'partial_parse': 'True', 'debug': 'False', 'use_experimental_parser': 'False', 'log_cache_events': 'False', 'quiet': 'False', 'warn_error': 'None', 'invocation_command': 'dbt run', 'indirect_selection': 'eager', 'write_json': 'True', 'printer_width': '80', 'profiles_dir': '/home/matheus/.dbt', 'introspect': 'True', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'log_format': 'default', 'cache_selected_only': 'False', 'empty': 'False'}
+[0m11:43:53.470268 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m11:43:53.471040 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.05915465, "process_in_blocks": "8", "process_kernel_time": 0.176677, "process_mem_max_rss": "103016", "process_out_blocks": "8", "process_user_time": 1.168481}
+[0m11:43:53.471476 [debug] [MainThread]: Command `dbt run` failed at 11:43:53.471398 after 0.06 seconds
+[0m11:43:53.471820 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75cf8746adb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75cf86dec6b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x75cf8702a690>]}
+[0m11:43:53.472200 [debug] [MainThread]: Flushing usage events
+[0m11:43:53.994571 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m16:49:03.910050 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0409676180>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f04094fb0b0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f040ac01f70>]}
+
+
+============================== 16:49:03.916784 | d6f7f5fd-99a1-43e8-88dc-c7f26d630c9b ==============================
+[0m16:49:03.916784 [info ] [MainThread]: Running with dbt=1.11.9
+[0m16:49:03.917276 [debug] [MainThread]: running dbt with arguments {'no_print': 'None', 'use_colors': 'True', 'debug': 'False', 'log_format': 'default', 'empty': 'False', 'send_anonymous_usage_stats': 'True', 'write_json': 'True', 'invocation_command': 'dbt run -s fct_vendas.sql', 'warn_error': 'None', 'fail_fast': 'False', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'introspect': 'True', 'profiles_dir': '/home/matheus/.dbt', 'version_check': 'True', 'partial_parse': 'True', 'log_path': 'logs', 'indirect_selection': 'eager', 'target_path': 'None', 'log_cache_events': 'False', 'printer_width': '80', 'cache_selected_only': 'False', 'use_experimental_parser': 'False'}
+[0m16:49:03.917747 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m16:49:03.918559 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.059760652, "process_in_blocks": "696", "process_kernel_time": 0.157648, "process_mem_max_rss": "102956", "process_out_blocks": "16", "process_user_time": 1.133471}
+[0m16:49:03.918981 [debug] [MainThread]: Command `dbt run` failed at 16:49:03.918901 after 0.06 seconds
+[0m16:49:03.919327 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f040a156e70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0408e402c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0408df5760>]}
+[0m16:49:03.919673 [debug] [MainThread]: Flushing usage events
+[0m16:49:04.450122 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:43:00.900120 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741224a08ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741223f71160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7412249a7e90>]}
+
+
+============================== 23:43:00.902870 | 1b7330fa-ceac-4388-afde-dee7ad4bc30b ==============================
+[0m23:43:00.902870 [info ] [MainThread]: Running with dbt=1.11.9
+[0m23:43:00.903396 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt run -s models/dims models/analysis', 'target_path': 'None', 'warn_error': 'None', 'static_parser': 'True', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'profiles_dir': '/home/matheus/.dbt', 'partial_parse': 'True', 'introspect': 'True', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'quiet': 'False', 'no_print': 'None', 'use_colors': 'True', 'log_path': 'logs', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'empty': 'False', 'debug': 'False', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m23:43:00.903905 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m23:43:00.904696 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.056157537, "process_in_blocks": "0", "process_kernel_time": 0.155827, "process_mem_max_rss": "103000", "process_out_blocks": "8", "process_user_time": 1.09978}
+[0m23:43:00.905139 [debug] [MainThread]: Command `dbt run` failed at 23:43:00.905057 after 0.06 seconds
+[0m23:43:00.905476 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741223e50980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741227fb7e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7412243c9640>]}
+[0m23:43:00.905850 [debug] [MainThread]: Flushing usage events
+[0m23:43:01.430257 [debug] [MainThread]: An error was encountered while trying to flush usage events
