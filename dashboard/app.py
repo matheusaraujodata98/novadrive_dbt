@@ -28,24 +28,43 @@ h1,h2,h3,h4,h5,h6,p,span,label,.stMarkdown{color:#E5E5EA !important}
 </style>""", unsafe_allow_html=True)
 
 # ── Geração de Dados ──────────────────────────────────────────────────────────
-random.seed(42)
-raw=[("Belo Horizonte","MINAS GERAIS"),("Uberlandia","MINAS GERAIS"),("Juiz de Fora","MINAS GERAIS"),
-    ("Sao Paulo Centro","SAO PAULO"),("Sao Paulo Zona Sul","SAO PAULO"),("Campinas","SAO PAULO"),("Santos","SAO PAULO"),
-    ("Rio de Janeiro Centro","RIO DE JANEIRO"),("Rio de Janeiro Barra","RIO DE JANEIRO"),("Niteroi","RIO DE JANEIRO"),
-    ("Curitiba","PARANA"),("Londrina","PARANA"),("Maringa","PARANA"),
-    ("Porto Alegre","RIO GRANDE DO SUL"),("Caxias do Sul","RIO GRANDE DO SUL"),
-    ("Salvador","BAHIA"),("Feira de Santana","BAHIA"),("Vitoria da Conquista","BAHIA"),
-    ("Recife","PERNAMBUCO"),("Caruaru","PERNAMBUCO"),("Goiania","GOIAS"),("Anapolis","GOIAS"),
-    ("Brasilia Asa Norte","DISTRITO FEDERAL"),("Brasilia Asa Sul","DISTRITO FEDERAL"),
-    ("Florianopolis","SANTA CATARINA"),("Joinville","SANTA CATARINA"),
-    ("Fortaleza","CEARA"),("Juazeiro do Norte","CEARA"),("Manaus","AMAZONAS"),
-    ("Belem","PARA"),("Vitoria","ESPIRITO SANTO"),("Campo Grande","MATO GROSSO DO SUL")]
+import snowflake.connector
 
-data=[{"Concessionaria":f"NovaDrive {c}","Cidade":c,"Estado":e,
-    "Qtd_Pedidos":random.randint(20,350),"Total_Vendas":round(random.uniform(800_000,12_000_000),2)}
-    for c,e in raw]
-df=pd.DataFrame(data)
-df["Ticket_Medio"]=(df["Total_Vendas"]/df["Qtd_Pedidos"]).round(2)
+@st.cache_resource
+def init_connection():
+    return snowflake.connector.connect(
+        user=st.secrets["snowflake"]["user"],
+        password=st.secrets["snowflake"]["password"],
+        account=st.secrets["snowflake"]["account"],
+        warehouse=st.secrets["snowflake"]["warehouse"],
+        database=st.secrets["snowflake"]["database"],
+        schema=st.secrets["snowflake"]["schema"]
+    )
+
+conn = init_connection()
+
+@st.cache_data(ttl=600)
+def load_data():
+    query = "SELECT * FROM ANALISE_VENDAS_CONCESSIONARIA"
+    return pd.read_sql(query, conn)
+
+df = load_data()
+
+# Padronizando e garantindo o nome das colunas
+df.columns = [c.upper() for c in df.columns]
+
+# Traduzindo das colunas do banco para o padrão que o layout já usa
+df = df.rename(columns={
+    "CONCESSIONARIA": "Concessionaria",
+    "CIDADE": "Cidade",
+    "ESTADO": "Estado",
+    "QUANTIDADE": "Qtd_Pedidos",     # De acordo com analise_vendas_concessionaria.sql
+    "TOTAL": "Total_Vendas",         # De acordo com analise_vendas_concessionaria.sql
+    "VALOR_MEDIO": "Ticket_Medio"    # De acordo com analise_vendas_concessionaria.sql
+})
+
+if "Ticket_Medio" not in df.columns and "Total_Vendas" in df.columns and "Qtd_Pedidos" in df.columns:
+    df["Ticket_Medio"]=(df["Total_Vendas"]/df["Qtd_Pedidos"]).round(2)
 
 # ── Cabeçalho e Filtros (Layout Superior) ─────────────────────────────────────
 st.markdown(f"""<div class="hero">
@@ -188,4 +207,4 @@ dt.columns=["Unidade","Cidade","Estado","Pedidos","Faturamento","Ticket Médio"]
 st.dataframe(dt,use_container_width=True,height=400,hide_index=True)
 
 st.markdown('<div style="text-align:center;padding:30px 0 10px;color:#636366;font-size:11px">'
-    '© 2026 NovaDrive Motors · Inteligência de Dados · Ambiente Seguro</div>',unsafe_allow_html=True)
+    '© 2026 NovaDrive Motors · Inteligência de Dados · Ambiente Seguro</div>',unsafe_allow_html=True)\
