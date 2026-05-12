@@ -158,9 +158,10 @@ fig_pareto.add_trace(go.Scatter(
     yaxis="y2", hovertemplate="Acumulado: %{y:.1f}%<extra></extra>"
 ))
 
+fig_pareto.update_layout(**LAYOUT)
 fig_pareto.update_layout(
-    **LAYOUT, height=450, showlegend=False,
-    yaxis=dict(title="Faturamento (R$)", showgrid=True, gridcolor="#1f2937"),
+    height=450, showlegend=False,
+    yaxis=dict(title="Faturamento (R$)", showgrid=True, gridcolor="#1f2937", zeroline=False),
     yaxis2=dict(title="% Acumulado", overlaying="y", side="right", range=[0, 110], showgrid=False)
 )
 st.plotly_chart(fig_pareto, use_container_width=True)
