@@ -25,7 +25,7 @@ O fluxo de dados segue a arquitetura **ELT (Extract, Load, Transform)**. As ferr
 * **Apache Airflow (Orquestração)**: Motor principal de orquestração. Automatizei a criação de *Directed Acyclic Graphs (DAGs)* para monitorar, agendar e orquestrar de forma confiável nossa carga de dados.
 * **Snowflake (Data Warehouse / Destino)**: Criei e configurei espaços no Snowflake para escalabilidade na nuvem. É neste ambiente em que ocorre o armazenamento final integrado a todo o ecossistema analítico.
 * **dbt (Data Build Tool - Transformação)**: Atua diretamente dentro do DW. Apliquei testes de qualidade, documentações vitais e boas práticas de modelagem *Star Schema* nas tabelas transacionais.
-* **Streamlit (Dashboard Frontend)**: Como última camada, com a responsabilidade final de visualização de alto nível para o tomador de decisão. Conectado diretamente aos *marts* gerados pelo dbt.
+* **Streamlit (Dashboard Frontend)**: Interface web de tempo real conectada aos *marts* do Snowflake. Apresenta KPIs, análises estratégicas, market share, comparativos de performance e rankings — tudo com visualizações interativas via Plotly.
 * **Docker & Docker Compose**: Utilizado para gerenciar eficientemente e isolar meu ambiente local (PostgreSQL nativo e Airflow containers).
 
 ---
@@ -119,6 +119,32 @@ Com os dados "brutos" dentro do Snowflake, o **dbt** (diretório `dbt_transforma
    pip install -r dashboard/requirements.txt
    streamlit run dashboard/app.py
    ```
+
+---
+
+## 📊 Dashboard Streamlit — Inteligência Comercial em Tempo Real
+
+O dashboard é um painel corporativo desenvolvido em **Streamlit** com tema dark moderno que consome dados em cache (TTL 10 min) do Snowflake. Integra cinco componentes principais:
+
+1. **KPIs Executivos**: Faturamento total, pedidos realizados, ticket médio, estado líder e estados acima da média de performance.
+
+2. **Análise Estratégica**: 4 cartões com insights automatizados:
+   - Concentração de receita nos 3 maiores estados
+   - Dispersão de ticket médio entre regiões
+   - Eficiência operacional de cada estado
+   - Estados críticos abaixo da média
+
+3. **Market Share (Treemap)**: Visualização hierárquica onde o tamanho do bloco representa faturamento e cor representa ticket médio. Facilita identificação de oportunidades de priorização.
+
+4. **Comparativos de Performance**: 
+   - Faturamento vs. Média Nacional (linha de referência)
+   - Volume de Pedidos por Estado (identifica discrepâncias de ticket)
+
+5. **Análise de Mix**: Ticket médio por estado com escala de cores (premium x economia), facilitando estratégias de upsell ou revisão de portfólio.
+
+6. **Rankings & Detalhes**: Top 10 concessionárias, ranking completo de estados e tabela consolidada com todos os dados brutos.
+
+🔗 **Acesse agora:** [novadrivedashboard.streamlit.app](https://novadrivedashboard.streamlit.app)
 
 ---
 *Engenharia arquitetada, desenvolvida e documentada por **Matheus** | Projeto voltado para portfólio contemplando toda a jornada de dados com a Cloud Data Stack moderna.*
