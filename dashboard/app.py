@@ -230,28 +230,6 @@ fig_tk.update_layout(**BG,height=440)
 fig_tk.update_xaxes(title="Ticket Médio (R$)",tickformat=",.0f") 
 st.plotly_chart(fig_tk,use_container_width=True)
 
-# ── Scatter Estratégico ───────────────────────────────────────────────────────
-st.markdown('<div class="dv"></div>',unsafe_allow_html=True)
-st.markdown('<span class="stitle">🔍 Matriz Estratégica: Volume × Faturamento</span>',unsafe_allow_html=True)
-st.caption("Quadrante superior direito = mercados de alto valor e alta frequência (prioridade máxima). "
-           "Superior esquerdo = alto valor, baixo volume (potencial de expansão). "
-           "Tamanho da bolha = ticket médio.")
-fig_sc=px.scatter(ve,x="Qtd_Pedidos",y="Total_Mi",size="Ticket_Medio",color="Ticket_Medio",
-    text="Estado",color_continuous_scale=[[0,"#1e3a5f"],[0.5,"#3b82f6"],[1,"#f59e0b"]],
-    labels={"Qtd_Pedidos":"Volume de Pedidos","Total_Mi":"Faturamento (R$ Mi)","Ticket_Medio":"Ticket Médio"})
-fig_sc.update_traces(textposition="top center",textfont=dict(size=9,color="#e5e7eb"),
-    marker=dict(line=dict(width=1,color="rgba(255, 255, 255, 0.1)"),sizemin=8)) # CORREÇÃO AQUI
-fig_sc.add_hline(y=ve.Total_Mi.median(),line=dict(color="#374151",width=1,dash="dot"))
-fig_sc.add_vline(x=ve.Qtd_Pedidos.median(),line=dict(color="#374151",width=1,dash="dot"))
-fig_sc.update_layout(**BG)
-fig_sc.update_layout(
-    height=440,
-    coloraxis_colorbar=dict(title="Ticket R$", tickformat=",.0f"),
-    margin=dict(l=10, r=80, t=30, b=10)
-)
-fig_sc.update_xaxes(title="Volume de Pedidos", showgrid=True, gridcolor="#111827")
-fig_sc.update_yaxes(title="Faturamento (R$ Mi)", showgrid=True, gridcolor="#111827")
-
 # ── Top 10 + Ranking ──────────────────────────────────────────────────────────
 st.markdown('<div class="dv"></div>',unsafe_allow_html=True)
 g3,g4=st.columns([1.4,0.6])
