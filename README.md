@@ -1,60 +1,69 @@
 # 🚗 Projeto Nova Drive - Data Engineering Pipeline
 
-A **Nova Drive** é uma rede fictícia de concessionárias de veículos. Este repositório contém a **Pipeline de Engenharia de Dados (ELT)** completa, construída para extrair dados do sistema transacional (ERP) da empresa, carregá-los de forma incremental num Data Warehouse na nuvem, e transformá-los num modelo analítico de *Star Schema* capaz de gerar insights de negócio.
+[![Status](https://img.shields.io/badge/Status-Concluído-success.svg)]()
+[![Python](https://img.shields.io/badge/Python-3776AB?style=flat&logo=python&logoColor=white)]()
+[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=flat&logo=postgresql&logoColor=white)]()
+[![Airflow](https://img.shields.io/badge/Airflow-017CEE?style=flat&logo=Apache%20Airflow&logoColor=white)]()
+[![Snowflake](https://img.shields.io/badge/Snowflake-29B5E8?style=flat&logo=snowflake&logoColor=white)]()
+[![dbt](https://img.shields.io/badge/dbt-FF694B?style=flat&logo=dbt&logoColor=white)]()
+[![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=flat&logo=streamlit&logoColor=white)]()
+[![Docker](https://img.shields.io/badge/Docker-2CA5E0?style=flat&logo=docker&logoColor=white)]()
+
+A **Nova Drive** é uma rede fictícia de concessionárias de veículos. Este repositório contém a **Pipeline de Engenharia de Dados (ELT)** completa que **eu desenvolvi** para extrair dados do sistema transacional (ERP) da empresa, carregá-los de forma incremental num Data Warehouse na nuvem, e transformá-los num modelo analítico de *Star Schema* capaz de gerar insights de negócio.
+
+Este projeto foi construído com base em um desafio real (inspirado em curso especializado na área), cujo grande objetivo foi demonstrar na prática como um Data Warehouse bem construído impulsiona a tomada de decisões corporativa baseada em dados, integrando ferramentas modernas de ponta a ponta.
 
 ## 🎯 Arquitetura da Solução e Stack Tecnológica
 
-O fluxo de dados segue a arquitetura **ELT (Extract, Load, Transform)** utilizando:
+O fluxo de dados segue a arquitetura **ELT (Extract, Load, Transform)**. As ferramentas que utilizei foram:
 
-* **PostgreSQL (Origem)**: Simula o banco de dados transacional atrelado ao sistema de vendas, gestão de frota, clientes e vendedores da concessionária.
-* **Apache Airflow**: Motor de orquestração. Gerencia o agendamento (`schedule=timedelta(days=1)`), controle das DAGs e o fluxo de dados em Python via operadores e decorators.
-* **Snowflake (Data Warehouse / Destino)**: Banco de dados colunar na nuvem, altamente escalável, para onde os dados brutos são ingeridos e onde ocorrem as agregações finais.
-* **dbt (Data Build Tool)**: Responsável pela fase de Transformação dentro do Snowflake. Padroniza as camadas (`stage`, `dimensions`, `facts` e `analysis`), garantindo qualidade e documentação dos dados.
-* **Docker & Docker Compose**: Automatiza a subida local da infraestrutura do Apache Airflow e das dependências.
+* **PostgreSQL (Origem)**: Explorei e naveguei profundamente pelo banco de dados da empresa para entender a estrutura transacional (vendas, frota, clientes e vendedores) e planejar de forma correta a migração.
+* **Apache Airflow**: Configurei o Airflow como motor principal de orquestração. Automatizei a criação de *Directed Acyclic Graphs (DAGs)* para monitorar, agendar e orquestrar de forma confiável nossa migração.
+* **Snowflake (Data Warehouse / Destino)**: Criei e configurei espaços no Snowflake para escalabilidade na nuvem. É nesse ambiente em que ocorre o armazenamento final (Data Warehouse) integrado a todo ecossistema.
+* **dbt (Data Build Tool)**: Configurei o dbt para atuar nas transformações diretamente dentro do DW. Apliquei testes de qualidade, documentações vitais e boas práticas de modelagem de dados nas tabelas transformadas.
+* **Streamlit (Dashboard)**: Como última camada, com a responsabilidade final de visualização para o tomador de decisão, desenvolvi um painel dinâmico em **Streamlit** (em contrapartida a ferramentas padrão como o Looker Studio), conectando aos marts do DW e visualizando KPIs.
+* **Docker & Docker Compose**: Utilizado para gerenciar eficientemente e isolar meu ambiente local (subida do Postgres nativo e instâncias de orquestração do Airflow).
 
 ---
 
 ## 🛠️ Como Funciona o Pipeline (ELT)
 
 ### 1. Extract & Load (Airflow)
-A orquestração está concentrada no script `dags/novadrive.py`. A DAG base (`postgres_to_snowflake_etl`) lê os dados do PostgreSQL usando o `PostgresHook` e carrega no Snowflake usando o `SnowflakeHook`.
-* **Carga Incremental Baseada em Watermark**: Para não sobrecarregar o banco com full loads diários, o script captura o `ID` máximo (Primary Key) existente no respectivo destino no Snowflake e busca no PostgreSQL **apenas novas linhas** onde o ID seja maior que o último registrado.
-* **Domínios (Tabelas) Ingeridos**: `vendas`, `veiculos`, `clientes`, `vendedores`, `concessionarias`, `estados` e `cidades`. A DAG gera tarefas dinamicamente em loop gerando tarefas `get_max_id_*` e `load_data_*`.
+A orquestração foi condensada por mim no script `dags/novadrive.py`. A DAG base (`postgres_to_snowflake_etl`) extrai do originário PostgreSQL e deposita no Snowflake com resiliência de tasks individuais dinâmicas.
+* **Carga Incremental Baseada em Watermark**: Ao criar as rotinas de carregamento, eu criei uma arquitetura inteligente que evita full-loads: o sistema verifica o Snapshot (`ID` máximo) lá do ambiente na nuvem e puxa na query transacional do Postgres **apenas as linhas novas**.
+* **Domínios (Tabelas) Ingeridos**: `vendas`, `veiculos`, `clientes`, `vendedores`, `concessionarias`, `estados` e `cidades`.
 
-### 2. Transform (dbt)
-Com os dados "crus/brutos" replicados no Snowflake, as transformações do dbt (`dbt_transformations/`) são acionadas em três camadas:
+### 2. Transform & Modeling (dbt)
+Com os dados "brutos" alinhados na nuvem do Snowflake, aciono o projeto que elaborei no dbt (`dbt_transformations/`) arquitetado no modelo **Star Schema**:
 
-* **1. Camada Stage (`models/stage/`)**: Trata e tipa os 7 domínios cruciais (padronizando nomenclaturas como `stg_vendas`, `stg_clientes`, etc).
-* **2. Camada Core / Data Warehouse (`models/dimensions/` e `models/facts/`)**:
-  * O schema final é um **Star Schema**.
-  * A estrela do modelo é a tabela Fatos **`fct_vendas`**, ligada às Dimensões (`dim_cidades`, `dim_clientes`, `dim_concessionarias`, `dim_estados`, `dim_veiculos` e `dim_vendedores`).
-* **3. Camada Analysis (`models/analysis/`)**: Datamarts materializados fisicamente como *Tables* no DW com Data Aggregation pronto para serem pludados pelo Painel de BI, sendo eles:
-  * `analise_vendas_concessionaria`: Quantidade, Faturamento Total e  Ticket Médio separados por Loja (Cidade e Estado).
-  * `analise_vendas_vendedor`: Performance individual dos vendedores com rankings de vendas e volume por filial.
-  * `analise_vendas_temporal`: Análise hierárquica truncada por Mês (sazonalidade comercial da Nova Drive).
-  * `analise_vendas_veiculo`: Foco no portfólio para ver quais modelos de carros vendem melhor.
+* **Camada Stage (`models/stage/`)**: Limpeza básica, cast de dados e padronizações (ex: `stg_vendas`, `stg_clientes`).
+* **Camada Core / Data Warehouse (`models/dimensions/` e `models/facts/`)**: A *Tabela Fatos* (`fct_vendas`) é materializada e vinculada inteligentemente aos atores *Dimensões* (`dim_cidades`, `dim_clientes` etc).
+* **Camada Analysis (`models/analysis/`)**: Meu produto primário pro Streamlit consumir. Agregações específicas:
+  * `analise_vendas_concessionaria`: Quantidade de carros vendidos, faturamento geral e ticket médio entre franquias locais.
+  * `analise_vendas_vendedor`: Rankeamento de vendedores em performance absoluta.
+  * `analise_vendas_temporal`: Análise sazonal mensal baseada na data de fechamento.
+  * `analise_vendas_veiculo`: Insights focados na aderência do portfólio de carros no mercado.
 
 ---
 
-## 📂 Visão Geral da Estrutura do Repositório
+## 📂 Estrutura do Repositório
 
 ```text
 .
-├── config/                  # Ajustes como `airflow.cfg`
-├── dags/                    # Código fonte do Airflow (`novadrive.py`)
-├── dbt_transformations/     # TODO o projeto de modelagem, SQLs e views
-├── plugins/                 # Extensões ou hooks custom do Airflow (se houver)
-├── scripts/                 # Bash/Python scripts para auxiliar operações DevOps
-├── docker-compose.yaml      # Definição e containers necessários do Airflow/Postgres
-├── .env.example             # Base p/ preencher `.env` (crentials Airflow, DW e DB)
-└── README.md                # Esta documentação
+├── config/                  # Ajustes vitais como airflow.cfg
+├── dags/                    # Minhas rotinas criadas no Airflow (extratores)
+├── dbt_transformations/     # Estrutura modular de dados usando o dbt
+├── plugins/                 # Extensões ou operators pro Airflow
+├── docker-compose.yaml      # Containers Docker para orquestrar dependências base
+├── .env.example             # Base p/ preencher configurações e credenciais
+└── README.md                # A documentação principal do projeto desenvolvido
 ```
 
 ---
 
 ## 🚀 Step-by-Step para Executar o Projeto Localmente
 
-**Pré-requisitos**: Possuir `Git`, ambiente virtual Python (`python -m venv`), Docker e Docker Compose nativos em sua máquina, conta liberada no Snowflake configurada.
+**Pré-requisitos**: Possuir `Git`, um gerenciador de python virt/env como o `python -m venv`, e de preferência o Docker/Compose já configurados nativamente. Precisará de Conta/DW no Snowflake.
 
 1. **Clone o repositório:**
    ```bash
@@ -62,20 +71,19 @@ Com os dados "crus/brutos" replicados no Snowflake, as transformações do dbt (
    cd nova-drive
    ```
 
-2. **Configure Variáveis de Ambiente de Forma Segura:**
+2. **Configure Variáveis de Ambiente e Conexões Seguras:**
    ```bash
    cp .env.example .env
-   # Abra o arquivo .env no seu editor e preencha as senhas de POSTGRES_* e SNOWFLAKE_*
+   # Mapeie no arquivo .env dados de acesso do Postgres e DW Snowflake
    ```
 
-3. **Inicie os Containers Docker (Ambiente Airflow):**
+3. **Inicie os Containers e Serviços Locais (Airflow):**
    ```bash
    docker-compose up -d
    ```
-   > Aguarde o término e acesse o Airflow em http://localhost:8080 (se certifique via UI e hooks que seu airflow conectará corretamente com os bancos Postgres e Snowflake).
+   > Aguarde o término e suba aos portais gerenciais, como o do Airflow (por padrão rodando em http://localhost:8080).
 
-4. **Trabalhadores e Instalação dbt:**
-   Num terminal local da sua máquina, ative o ambiente virtual para baixar a camada de testes:
+4. **Prepare a dependência de Transformação de Dados:**
    ```bash
    cd dbt_transformations
    python3 -m venv .venv
@@ -84,17 +92,14 @@ Com os dados "crus/brutos" replicados no Snowflake, as transformações do dbt (
    dbt deps
    ```
 
-5. **Execute a Compilação do Data Warehouse:**
-   Cuidado para ter a DAG `postgres_to_snowflake` já executada com sucesso ao menos uma vez.
+5. **Trabalho do Pipeline Completo:**
+   Execute a carga principal via interface/Airflow-scheduler, certificando de que os dados caíram no Data Warehouse. Em seguida, acione o motor de DW.
    ```bash
-   dbt build  # Irá executar seed, run no modelo cronológico e testes no DW
+   dbt build  # Vai aplicar testes de robustez e criar as tabelas transformadas no Snowflake
    ```
 
-6. **Acesse as métricas de Linhagem dos Dados:**
+6. **Gerador de Documentação Oficial de Dados e Linhagem (Data Lineage):**
    ```bash
    dbt docs generate
    dbt docs serve
-   # Navegue até localhost:8080 caso não abra sozinho
    ```
----
-*Engenharia implementada por **Matheus** | Projeto voltado para portfolio e aprendizado avançado na Cloud Data Stack.*
