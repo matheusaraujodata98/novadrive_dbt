@@ -123,8 +123,14 @@ LAYOUT=dict(paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)",
     yaxis=dict(showgrid=False,tickfont=dict(size=10)))
 
 def hbar(df_,x,y,txt,cor,height=400):
+    n=len(df_)
+    vals=df_[x].values
+    mn,mx=vals.min(),vals.max()+1
+    norm=[(v-mn)/(mx-mn) for v in vals]
+    r,g,b=int(cor[1:3],16),int(cor[3:5],16),int(cor[5:7],16)
+    colors=[f"rgba({r},{g},{b},{0.3+0.7*v:.2f})" for v in norm]
     fig=go.Figure(go.Bar(x=df_[x],y=df_[y],orientation="h",
-        marker=dict(color=df_[x],colorscale=[[0,cor+"55"],[1,cor]],showscale=False),
+        marker_color=colors,
         text=txt,textposition="outside",textfont=dict(size=10,color="#e5e5ea"),
         hovertemplate="<b>%{y}</b><br>%{text}<extra></extra>"))
     fig.update_layout(**LAYOUT,height=height)
