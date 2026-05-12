@@ -30,7 +30,7 @@ O projeto segue uma arquitetura **ELT moderna** onde os dados fluem através de 
 
 A imagem abaixo ilustra toda a infraestrutura e fluxo de dados:
 
-![Nova Drive Architecture](./novadrive_architecture.jpeg)
+![Nova Drive Architecture](novadrive_architecture.jpeg)
 
 ---
 
