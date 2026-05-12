@@ -123,18 +123,15 @@ LAYOUT=dict(paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)",
     yaxis=dict(showgrid=False,tickfont=dict(size=10)))
 
 def hbar(df_,x,y,txt,cor,height=400):
-    n=len(df_)
-    vals=df_[x].values
-    mn,mx=vals.min(),vals.max()+1
-    norm=[(v-mn)/(mx-mn) for v in vals]
-    r,g,b=int(cor[1:3],16),int(cor[3:5],16),int(cor[5:7],16)
-    colors=[f"rgba({r},{g},{b},{0.3+0.7*v:.2f})" for v in norm]
+    # CORREÇÃO 1: Convertendo a cor Hexadecimal para RGBA para evitar o erro do Plotly
+    cor_rgba = f"rgba({int(cor[1:3],16)}, {int(cor[3:5],16)}, {int(cor[5:7],16)}, 0.33)"
+    
     fig=go.Figure(go.Bar(x=df_[x],y=df_[y],orientation="h",
-        marker_color=colors,
+        marker=dict(color=df_[x],colorscale=[[0,cor_rgba],[1,cor]],showscale=False),
         text=txt,textposition="outside",textfont=dict(size=10,color="#e5e5ea"),
         hovertemplate="<b>%{y}</b><br>%{text}<extra></extra>"))
     fig.update_layout(**LAYOUT,height=height)
-    fig.update_xaxis(showgrid=True,gridcolor="#1f2937")
+    fig.update_xaxes(showgrid=True,gridcolor="#1f2937") # CORREÇÃO 2: update_xaxes no plural
     return fig
 
 # ── Gráfico 1+2: Faturamento e Pedidos ───────────────────────────────────────
@@ -145,14 +142,14 @@ with g1:
     st.markdown('<p class="stitle">💰 Faturamento por Estado</p>', unsafe_allow_html=True)
     fat=ve.sort_values("Total_Vendas",ascending=True)
     fig=hbar(fat,"Total_Mi","Estado",[f"R$ {v:.1f}M" for v in fat.Total_Mi],"#3b82f6",420)
-    fig.update_xaxis(title="R$ Milhões")
+    fig.update_xaxes(title="R$ Milhões") # CORREÇÃO 2: plural
     st.plotly_chart(fig,use_container_width=True)
 
 with g2:
     st.markdown('<p class="stitle">📦 Pedidos por Estado</p>', unsafe_allow_html=True)
     ped=ve.sort_values("Qtd_Pedidos",ascending=True)
     fig=hbar(ped,"Qtd_Pedidos","Estado",[f"{int(v):,}" for v in ped.Qtd_Pedidos],"#10b981",420)
-    fig.update_xaxis(title="Quantidade de Pedidos")
+    fig.update_xaxes(title="Quantidade de Pedidos") # CORREÇÃO 2: plural
     st.plotly_chart(fig,use_container_width=True)
 
 # ── Gráfico 3: Ticket Médio ────────────────────────────────────────────────────
@@ -167,7 +164,7 @@ fig3=go.Figure(go.Bar(x=tkt["Ticket_Medio"],y=tkt["Estado"],orientation="h",
     textposition="outside",textfont=dict(size=10,color="#e5e5ea"),
     hovertemplate="<b>%{y}</b><br>Ticket Médio: R$ %{x:,.0f}<extra></extra>"))
 fig3.update_layout(**LAYOUT,height=420)
-fig3.update_xaxis(title="R$ por Pedido",tickformat=",.0f")
+fig3.update_xaxes(title="R$ por Pedido",tickformat=",.0f") # CORREÇÃO 2: plural
 st.plotly_chart(fig3,use_container_width=True)
 
 # ── Gráfico 4: Top 10 Concessionárias ─────────────────────────────────────────
@@ -181,7 +178,7 @@ with g3:
     t10["Mi"]=(t10.Total_Vendas/1e6).round(1)
     t10=t10.sort_values("Total_Vendas",ascending=True)
     fig4=hbar(t10,"Mi","Nome",[f"R$ {v:.1f}M" for v in t10.Mi],"#8b5cf6",380)
-    fig4.update_xaxis(title="R$ Milhões")
+    fig4.update_xaxes(title="R$ Milhões") # CORREÇÃO 2: plural
     st.plotly_chart(fig4,use_container_width=True)
 
 with g4:
@@ -200,11 +197,14 @@ st.caption("Estados no quadrante superior direito têm alto volume E alto fatura
 fig5=px.scatter(ve,x="Qtd_Pedidos",y="Total_Mi",size="Ticket_Medio",color="Ticket_Medio",
     text="Estado",color_continuous_scale=[[0,"#1e3a5f"],[0.5,"#3b82f6"],[1,"#f59e0b"]],
     labels={"Qtd_Pedidos":"Pedidos","Total_Mi":"Faturamento (R$ Mi)","Ticket_Medio":"Ticket Médio"})
+
+# CORREÇÃO 3: Substituído o Hex #ffffff22 por rgba correspondente
 fig5.update_traces(textposition="top center",textfont=dict(size=9,color="#e5e5ea"),
-    marker=dict(line=dict(width=1,color="#ffffff22")))
+    marker=dict(line=dict(width=1,color="rgba(255, 255, 255, 0.13)"))) 
+
 fig5.update_layout(**LAYOUT,height=420,coloraxis_colorbar=dict(title="Ticket R$",tickformat=",.0f"))
-fig5.update_xaxis(title="Quantidade de Pedidos",showgrid=True,gridcolor="#1f2937")
-fig5.update_yaxis(title="Faturamento (R$ Mi)",showgrid=True,gridcolor="#1f2937")
+fig5.update_xaxes(title="Quantidade de Pedidos",showgrid=True,gridcolor="#1f2937") # CORREÇÃO 2: plural
+fig5.update_yaxes(title="Faturamento (R$ Mi)",showgrid=True,gridcolor="#1f2937") # CORREÇÃO 2: plural
 st.plotly_chart(fig5,use_container_width=True)
 
 # ── Tabela ─────────────────────────────────────────────────────────────────────
