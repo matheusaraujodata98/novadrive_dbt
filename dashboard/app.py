@@ -130,76 +130,69 @@ for col,bg,border,clr,icon,txt in insights:
         unsafe_allow_html=True)
 
 # ── Auxiliares Plotly ─────────────────────────────────────────────────────────
-LAYOUT=dict(paper_bgcolor="rgba(0,0,0,0)",plot_bgcolor="rgba(0,0,0,0)",
-    font=dict(color="#9ca3af",size=11),margin=dict(l=10,r=80,t=10,b=10),
-    xaxis=dict(showgrid=True,gridcolor="#1f2937",zeroline=False),
-    yaxis=dict(showgrid=False,tickfont=dict(size=10)))
+LAYOUT = dict(
+    paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
+    font=dict(color="#9ca3af", size=11), margin=dict(l=10, r=10, t=30, b=10),
+    xaxis=dict(showgrid=False, zeroline=False),
+    yaxis=dict(showgrid=True, gridcolor="#1f2937", zeroline=False)
+)
 
-def hbar(df_,x,y,txt,cor,height=400):
-    cor_rgba = f"rgba({int(cor[1:3],16)}, {int(cor[3:5],16)}, {int(cor[5:7],16)}, 0.33)"
-    fig=go.Figure(go.Bar(x=df_[x],y=df_[y],orientation="h",
-        marker=dict(color=df_[x],colorscale=[[0,cor_rgba],[1,cor]],showscale=False),
-        text=txt,textposition="outside",textfont=dict(size=10,color="#e5e5ea"),
-        hovertemplate="<b>%{y}</b><br>%{text}<extra></extra>"))
-    fig.update_layout(**LAYOUT,height=height)
-    fig.update_xaxes(showgrid=True,gridcolor="#1f2937")
-    return fig
-
-# ── Gráficos de Faturamento e Volume ──────────────────────────────────────────
+# ── 1. Visão Macro: Distribuição de Faturamento (Treemap) ─────────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-g1,g2=st.columns(2)
+st.markdown('<p class="stitle">🗺️ Visão Macro: Participação de Faturamento por Estado</p>', unsafe_allow_html=True)
+
+fig_tree = px.treemap(
+    ve, path=[px.Constant("Brasil"), "Estado"], values="Total_Vendas",
+    color="Total_Vendas", color_continuous_scale="Blues",
+    custom_data=["Qtd_Pedidos", "Ticket_Medio"]
+)
+fig_tree.update_traces(
+    hovertemplate="<b>%{label}</b><br>Faturamento: R$ %{value:,.2f}<br>Pedidos: %{customdata[0]}<br>Ticket: R$ %{customdata[1]:,.2f}<extra></extra>",
+    textinfo="label+value+percent parent"
+)
+fig_tree.update_layout(**LAYOUT, height=450)
+st.plotly_chart(fig_tree, use_container_width=True)
+
+# ── 2. Relação: Eficiência vs Volume ──────────────────────────────────────────
+st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
+st.markdown('<p class="stitle">⚖️ Eficiência (Ticket Médio) vs Escala (Volume de Pedidos)</p>', unsafe_allow_html=True)
+
+fig_scatter = px.scatter(
+    ve, x="Qtd_Pedidos", y="Ticket_Medio", size="Total_Vendas", color="Estado",
+    hover_name="Estado", size_max=45, template="plotly_dark",
+    labels={"Qtd_Pedidos": "Quantidade de Pedidos", "Ticket_Medio": "Ticket Médio (R$)"}
+)
+fig_scatter.update_layout(**LAYOUT, height=450, showlegend=False)
+fig_scatter.update_xaxes(showgrid=True, gridcolor="#1f2937")
+st.plotly_chart(fig_scatter, use_container_width=True)
+
+# ── 3. Visão Micro: Top 10 Concessionárias (Vertical) & Ranking ───────────────
+st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
+g1, g2 = st.columns([1.5, 1])
 
 with g1:
-    st.markdown('<p class="stitle">💰 Volume Financeiro por Estado</p>', unsafe_allow_html=True)
-    fat=ve.sort_values("Total_Vendas",ascending=True)
-    fig=hbar(fat,"Total_Mi","Estado",[f"R$ {v:.1f}M" for v in fat.Total_Mi],"#3b82f6",420)
-    fig.update_xaxes(title="R$ Milhões") 
-    st.plotly_chart(fig,use_container_width=True)
+    st.markdown('<p class="stitle">🏢 Top 10 Concessionárias em Faturamento</p>', unsafe_allow_html=True)
+    t10 = d.nlargest(10, "Total_Vendas").copy()
+    t10["Nome"] = t10.Concessionaria.str.replace("NovaDrive ", "", regex=False)
+    
+    fig_bar = px.bar(
+        t10, x="Nome", y="Total_Vendas", text=t10["Total_Vendas"].apply(lambda x: f"R$ {x/1e6:.1f}M"),
+        color="Total_Vendas", color_continuous_scale="Purples"
+    )
+    fig_bar.update_traces(textposition="outside", hovertemplate="<b>%{x}</b><br>Faturamento: R$ %{y:,.2f}<extra></extra>")
+    fig_bar.update_layout(**LAYOUT, height=400, showlegend=False, coloraxis_showscale=False)
+    fig_bar.update_xaxes(title="")
+    fig_bar.update_yaxes(title="Faturamento (R$)")
+    st.plotly_chart(fig_bar, use_container_width=True)
 
 with g2:
-    st.markdown('<p class="stitle">📦 Volume de Pedidos por Estado</p>', unsafe_allow_html=True)
-    ped=ve.sort_values("Qtd_Pedidos",ascending=True)
-    fig=hbar(ped,"Qtd_Pedidos","Estado",[f"{int(v):,}" for v in ped.Qtd_Pedidos],"#10b981",420)
-    fig.update_xaxes(title="Total de Pedidos") 
-    st.plotly_chart(fig,use_container_width=True)
-
-# ── Gráfico de Ticket Médio ───────────────────────────────────────────────────
-st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-st.markdown('<p class="stitle">🎯 Eficiência de Venda (Ticket Médio)</p>', unsafe_allow_html=True)
-tkt=ve.sort_values("Ticket_Medio",ascending=True)
-fig3=go.Figure(go.Bar(x=tkt["Ticket_Medio"],y=tkt["Estado"],orientation="h",
-    marker=dict(color=tkt["Ticket_Medio"],
-        colorscale=[[0,"#064e3b"],[0.4,"#f59e0b"],[1,"#ef4444"]],
-        showscale=True,colorbar=dict(title="R$",tickformat=",.0f",len=0.8)),
-    text=[f"R$ {v:,.0f}" for v in tkt["Ticket_Medio"]],
-    textposition="outside",textfont=dict(size=10,color="#e5e5ea"),
-    hovertemplate="<b>%{y}</b><br>Ticket: R$ %{x:,.0f}<extra></extra>"))
-fig3.update_layout(**LAYOUT,height=420)
-fig3.update_xaxes(title="R$ por Unidade",tickformat=",.0f") 
-st.plotly_chart(fig3,use_container_width=True)
-
-# ── Top 10 e Ranking Auxiliar ─────────────────────────────────────────────────
-st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
-g3,g4=st.columns([1.4,0.6])
-
-with g3:
-    st.markdown('<p class="stitle">🏢 Performance Individual: Top 10 Concessionárias</p>', unsafe_allow_html=True)
-    t10=d.nlargest(10,"Total_Vendas").copy()
-    t10["Nome"]=t10.Concessionaria.str.replace("NovaDrive ","",regex=False)
-    t10["Mi"]=(t10.Total_Vendas/1e6).round(1)
-    t10=t10.sort_values("Total_Vendas",ascending=True)
-    fig4=hbar(t10,"Mi","Nome",[f"R$ {v:.1f}M" for v in t10.Mi],"#8b5cf6",380)
-    fig4.update_xaxes(title="R$ Milhões") 
-    st.plotly_chart(fig4,use_container_width=True)
-
-with g4:
     st.markdown('<p class="stitle">🏆 Ranking de Estados</p>', unsafe_allow_html=True)
-    rk=ve.sort_values("Total_Vendas",ascending=False).copy()
-    rk["R$ Mi"]=(rk.Total_Vendas/1e6).round(1)
-    rk["%"]=(rk.Total_Vendas/tv*100).round(1)
-    rk.insert(0,"#",range(1,len(rk)+1))
-    st.dataframe(rk[["#","Estado","R$ Mi","%"]].style.format({"R$ Mi":"R$ {:,.1f}M","%":"{:.1f}%"}),
-        use_container_width=True,height=380,hide_index=True)
+    rk = ve.sort_values("Total_Vendas", ascending=False).copy()
+    rk["R$ Mi"] = (rk.Total_Vendas/1e6).round(1)
+    rk["%"] = (rk.Total_Vendas/tv*100).round(1)
+    rk.insert(0, "#", range(1, len(rk)+1))
+    st.dataframe(rk[["#", "Estado", "R$ Mi", "%"]].style.format({"R$ Mi": "R$ {:,.1f}M", "%": "{:.1f}%"}),
+                 use_container_width=True, height=400, hide_index=True)
 
 # ── Tabela de Dados Brutos ────────────────────────────────────────────────────
 st.markdown('<div class="dv"></div>', unsafe_allow_html=True)
