@@ -207,4 +207,4 @@ dt.columns=["Unidade","Cidade","Estado","Pedidos","Faturamento","Ticket Médio"]
 st.dataframe(dt,use_container_width=True,height=400,hide_index=True)
 
 st.markdown('<div style="text-align:center;padding:30px 0 10px;color:#636366;font-size:11px">'
-    '© 2026 NovaDrive Motors · Inteligência de Dados · Ambiente Seguro</div>',unsafe_allow_html=True)\
+    '© 2026 NovaDrive Motors · Inteligência de Dados · Ambiente Seguro</div>',unsafe_allow_html=True)
