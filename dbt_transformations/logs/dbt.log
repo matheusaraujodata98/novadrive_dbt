@@ -521,3 +521,1192 @@ Compilation Error
 [0m18:59:42.828300 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e949b6163c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e949b617380>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e949b82b290>]}
 [0m18:59:42.828666 [debug] [MainThread]: Flushing usage events
 [0m18:59:43.354570 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:43:22.515100 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7277ed9af0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7275bae780>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7277d58dd0>]}
+
+
+============================== 23:43:22.517612 | 006876bd-590b-4b65-9b83-d66c16c8f079 ==============================
+[0m23:43:22.517612 [info ] [MainThread]: Running with dbt=1.11.9
+[0m23:43:22.518171 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt run -s models/dims models/analysis', 'use_experimental_parser': 'False', 'profiles_dir': '/home/matheus/.dbt', 'empty': 'False', 'printer_width': '80', 'fail_fast': 'False', 'log_path': '/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/logs', 'partial_parse': 'True', 'quiet': 'False', 'indirect_selection': 'eager', 'log_format': 'default', 'no_print': 'None', 'write_json': 'True', 'cache_selected_only': 'False', 'target_path': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'debug': 'False', 'log_cache_events': 'False', 'send_anonymous_usage_stats': 'True', 'warn_error': 'None', 'use_colors': 'True', 'introspect': 'True', 'version_check': 'True'}
+[0m23:43:22.690714 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m23:43:22.691174 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m23:43:22.691494 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m23:43:22.879064 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e727874ce30>]}
+[0m23:43:22.929703 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e72744c03e0>]}
+[0m23:43:22.930431 [info ] [MainThread]: Registered adapter: snowflake=1.11.4
+[0m23:43:23.052417 [debug] [MainThread]: checksum: f8bb6a62265c70f2530bed05e52c2cee1c1844b101d398a67d5798350ab914c5, vars: {}, profile: , target: , version: 1.11.9
+[0m23:43:23.119567 [info ] [MainThread]: Unable to do partial parsing because config vars, config profile, or config target have changed
+[0m23:43:23.120015 [debug] [MainThread]: previous checksum: f8bb6a62265c70f2530bed05e52c2cee1c1844b101d398a67d5798350ab914c5, current checksum: a2a6c3ad70d97238cd4662b1abb61bcb7b07a15f9f2431ec5bf3dbb2eaaa5bac
+[0m23:43:23.120349 [info ] [MainThread]: Unable to do partial parsing because a project config has changed
+[0m23:43:23.120681 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'partial_parser', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7275eba720>]}
+[0m23:43:24.125937 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.NOVADRIVE.analises
+- models.NOVADRIVE.staging
+- models.NOVADRIVE.dims
+[0m23:43:24.133487 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7272e69d90>]}
+[0m23:43:24.198392 [debug] [MainThread]: Wrote artifact WritableManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/manifest.json
+[0m23:43:24.200299 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/semantic_manifest.json
+[0m23:43:24.207426 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7273135b80>]}
+[0m23:43:24.207957 [info ] [MainThread]: Found 19 models, 7 sources, 526 macros
+[0m23:43:24.208381 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e72787f95e0>]}
+[0m23:43:24.210016 [warn ] [MainThread]: The selection criterion 'models/dims' does not match any enabled nodes
+[0m23:43:24.212957 [info ] [MainThread]: 
+[0m23:43:24.213355 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:43:24.213828 [info ] [MainThread]: 
+[0m23:43:24.214500 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:43:24.219318 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_NOVADRIVE'
+[0m23:43:24.256079 [debug] [ThreadPool]: Using snowflake connection "list_NOVADRIVE"
+[0m23:43:24.256533 [debug] [ThreadPool]: On list_NOVADRIVE: show terse schemas in database NOVADRIVE
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "connection_name": "list_NOVADRIVE"} */
+[0m23:43:24.256867 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:43:25.639532 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 1.383 seconds
+[0m23:43:25.642590 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_NOVADRIVE, now list_NOVADRIVE_stage)
+[0m23:43:25.652476 [debug] [ThreadPool]: Using snowflake connection "list_NOVADRIVE_stage"
+[0m23:43:25.652892 [debug] [ThreadPool]: On list_NOVADRIVE_stage: show objects in NOVADRIVE.stage
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "connection_name": "list_NOVADRIVE_stage"} */;
+[0m23:43:25.794915 [debug] [ThreadPool]: SQL status: SUCCESS 26 in 0.142 seconds
+[0m23:43:25.800239 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7271715670>]}
+[0m23:43:25.802745 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:43:25.803175 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.analise_vendas_temporal
+[0m23:43:25.804136 [debug] [Thread-4 (]: Began running node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:43:25.804669 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:43:25.803755 [info ] [Thread-2 (]: 1 of 4 START sql table model stage.analise_vendas_concessionaria ............... [RUN]
+[0m23:43:25.805261 [info ] [Thread-3 (]: 2 of 4 START sql table model stage.analise_vendas_temporal ..................... [RUN]
+[0m23:43:25.805740 [info ] [Thread-4 (]: 3 of 4 START sql table model stage.analise_vendas_veiculo ...................... [RUN]
+[0m23:43:25.806233 [info ] [Thread-5 (]: 4 of 4 START sql table model stage.analise_vendas_vendedor ..................... [RUN]
+[0m23:43:25.806652 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_NOVADRIVE_stage, now model.NOVADRIVE.analise_vendas_concessionaria)
+[0m23:43:25.807158 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.NOVADRIVE.analise_vendas_temporal'
+[0m23:43:25.807664 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.NOVADRIVE.analise_vendas_veiculo'
+[0m23:43:25.808145 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.NOVADRIVE.analise_vendas_vendedor'
+[0m23:43:25.808496 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:43:25.808881 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.analise_vendas_temporal
+[0m23:43:25.809276 [debug] [Thread-4 (]: Began compiling node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:43:25.809620 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:43:25.816705 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_concessionaria"
+[0m23:43:25.820031 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_temporal"
+[0m23:43:25.822642 [debug] [Thread-4 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_veiculo"
+[0m23:43:25.825611 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_vendedor"
+[0m23:43:25.826369 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:43:25.826826 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.analise_vendas_temporal
+[0m23:43:25.827303 [debug] [Thread-4 (]: Began executing node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:43:25.853271 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:43:25.864624 [debug] [Thread-2 (]: Writing runtime sql for node "model.NOVADRIVE.analise_vendas_concessionaria"
+[0m23:43:25.867445 [debug] [Thread-3 (]: Writing runtime sql for node "model.NOVADRIVE.analise_vendas_temporal"
+[0m23:43:25.869712 [debug] [Thread-4 (]: Writing runtime sql for node "model.NOVADRIVE.analise_vendas_veiculo"
+[0m23:43:25.871883 [debug] [Thread-5 (]: Writing runtime sql for node "model.NOVADRIVE.analise_vendas_vendedor"
+[0m23:43:25.873039 [debug] [Thread-3 (]: Using snowflake connection "model.NOVADRIVE.analise_vendas_temporal"
+[0m23:43:25.873963 [debug] [Thread-2 (]: Using snowflake connection "model.NOVADRIVE.analise_vendas_concessionaria"
+[0m23:43:25.874369 [debug] [Thread-3 (]: On model.NOVADRIVE.analise_vendas_temporal: create or replace transient table NOVADRIVE.stage.analise_vendas_temporal
+    
+    
+    
+    as (
+SELECT
+    DATE_TRUNC('month', v.data_venda) AS mes_venda,
+    COUNT(v.venda_id) AS numero_vendas,
+    SUM(v.valor_venda) AS total_vendas,
+    AVG(v.valor_venda) AS valor_medio_venda
+FROM NOVADRIVE.stage.fct_vendas v
+GROUP BY DATE_TRUNC('month', v.data_venda)
+ORDER BY mes_venda
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.analise_vendas_temporal"} */;
+[0m23:43:25.875176 [debug] [Thread-4 (]: Using snowflake connection "model.NOVADRIVE.analise_vendas_veiculo"
+[0m23:43:25.875632 [debug] [Thread-2 (]: On model.NOVADRIVE.analise_vendas_concessionaria: create or replace transient table NOVADRIVE.stage.analise_vendas_concessionaria
+    
+    
+    
+    as (
+SELECT
+    con.concessionaria_id AS id,
+    con.nome_concessionaria AS concessionaria,
+    cid.nome_cidade AS cidade,
+    est.nome_estado AS estado,
+    COUNT(v.venda_id) AS quantidade,
+    SUM(v.valor_venda) AS total,
+    AVG(v.valor_venda) AS valor_medio
+FROM NOVADRIVE.stage.fct_vendas v
+JOIN NOVADRIVE.stage.dim_concessionarias con ON v.concessionaria_id = con.concessionaria_id
+JOIN NOVADRIVE.stage.dim_cidades cid ON con.cidade_id = cid.cidade_id
+JOIN NOVADRIVE.stage.dim_estados est ON cid.estado_id = est.estado_id
+GROUP BY con.concessionaria_id, con.nome_concessionaria, cid.nome_cidade, est.nome_estado
+ORDER BY total DESC
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.analise_vendas_concessionaria"} */;
+[0m23:43:25.876507 [debug] [Thread-5 (]: Using snowflake connection "model.NOVADRIVE.analise_vendas_vendedor"
+[0m23:43:25.876965 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m23:43:25.877429 [debug] [Thread-4 (]: On model.NOVADRIVE.analise_vendas_veiculo: create or replace transient table NOVADRIVE.stage.analise_vendas_veiculo
+    
+    
+    
+    as (
+SELECT
+    vei.veiculo_id AS id,
+    vei.nome_veiculo AS veiculo,
+    vei.tipo AS tipo,
+    vei.valor_sugerido AS valor_sugerido,
+    COUNT(v.venda_id) AS quantidade,
+    SUM(v.valor_venda) AS total,
+    AVG(v.valor_venda) AS valor_medio
+FROM NOVADRIVE.stage.fct_vendas v
+JOIN NOVADRIVE.stage.dim_veiculos vei ON v.veiculo_id = vei.veiculo_id
+GROUP BY vei.veiculo_id, vei.nome_veiculo, vei.tipo, vei.valor_sugerido
+ORDER BY quantidade desc
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.analise_vendas_veiculo"} */;
+[0m23:43:25.878159 [debug] [Thread-5 (]: On model.NOVADRIVE.analise_vendas_vendedor: create or replace transient table NOVADRIVE.stage.analise_vendas_vendedor
+    
+    
+    
+    as (
+SELECT
+    ven.vendedor_id AS id,
+    ven.nome_vendedor AS vendedor,
+    nome_concessionaria AS concessionaria,
+    COUNT(v.venda_id) AS quantidade,
+    SUM(v.valor_venda) AS total,
+    AVG(v.valor_venda) AS valor_medio
+FROM NOVADRIVE.stage.fct_vendas v
+JOIN NOVADRIVE.stage.dim_vendedores ven ON v.vendedor_id = ven.vendedor_id
+JOIN NOVADRIVE.stage.dim_concessionarias c ON c.concessionaria_id = ven.concessionaria_id
+GROUP BY ven.vendedor_id, ven.nome_vendedor,  c.nome_concessionaria
+ORDER BY total DESC
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.analise_vendas_vendedor"} */;
+[0m23:43:25.880535 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m23:43:25.881678 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m23:43:27.666841 [debug] [Thread-2 (]: SQL status: SUCCESS 29 in 1.789 seconds
+[0m23:43:27.686735 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e72759e6030>]}
+[0m23:43:27.687365 [info ] [Thread-2 (]: 1 of 4 OK created sql table model stage.analise_vendas_concessionaria .......... [[32mSUCCESS 29[0m in 1.88s]
+[0m23:43:27.687918 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:43:27.895015 [debug] [Thread-3 (]: SQL status: SUCCESS 2 in 2.018 seconds
+[0m23:43:27.896890 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7270b8cbc0>]}
+[0m23:43:27.897432 [info ] [Thread-3 (]: 2 of 4 OK created sql table model stage.analise_vendas_temporal ................ [[32mSUCCESS 2[0m in 2.09s]
+[0m23:43:27.897985 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.analise_vendas_temporal
+[0m23:43:27.999325 [debug] [Thread-5 (]: SQL status: SUCCESS 53 in 2.118 seconds
+[0m23:43:28.001088 [debug] [Thread-5 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7272f28920>]}
+[0m23:43:28.001632 [info ] [Thread-5 (]: 4 of 4 OK created sql table model stage.analise_vendas_vendedor ................ [[32mSUCCESS 53[0m in 2.19s]
+[0m23:43:28.002171 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:43:28.013607 [debug] [Thread-4 (]: SQL status: SUCCESS 8 in 2.133 seconds
+[0m23:43:28.015257 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': '006876bd-590b-4b65-9b83-d66c16c8f079', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7270a80380>]}
+[0m23:43:28.015798 [info ] [Thread-4 (]: 3 of 4 OK created sql table model stage.analise_vendas_veiculo ................. [[32mSUCCESS 8[0m in 2.21s]
+[0m23:43:28.016303 [debug] [Thread-4 (]: Finished running node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:43:28.017864 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:43:28.018320 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_concessionaria' was left open.
+[0m23:43:28.018776 [debug] [MainThread]: On model.NOVADRIVE.analise_vendas_concessionaria: Close
+[0m23:43:28.524404 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_temporal' was left open.
+[0m23:43:28.524836 [debug] [MainThread]: On model.NOVADRIVE.analise_vendas_temporal: Close
+[0m23:43:28.682473 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_veiculo' was left open.
+[0m23:43:28.682917 [debug] [MainThread]: On model.NOVADRIVE.analise_vendas_veiculo: Close
+[0m23:43:28.859630 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_vendedor' was left open.
+[0m23:43:28.860063 [debug] [MainThread]: On model.NOVADRIVE.analise_vendas_vendedor: Close
+[0m23:43:29.029269 [info ] [MainThread]: 
+[0m23:43:29.029732 [info ] [MainThread]: Finished running 4 table models in 0 hours 0 minutes and 4.81 seconds (4.81s).
+[0m23:43:29.030676 [debug] [MainThread]: Command end result
+[0m23:43:29.057952 [debug] [MainThread]: Wrote artifact WritableManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/manifest.json
+[0m23:43:29.059576 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/semantic_manifest.json
+[0m23:43:29.063875 [debug] [MainThread]: Wrote artifact RunExecutionResult to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/run_results.json
+[0m23:43:29.064186 [info ] [MainThread]: 
+[0m23:43:29.064538 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:43:29.064848 [info ] [MainThread]: 
+[0m23:43:29.065173 [info ] [MainThread]: Done. PASS=4 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=4
+[0m23:43:29.065913 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 6.5997844, "process_in_blocks": "840", "process_kernel_time": 0.29892, "process_mem_max_rss": "164000", "process_out_blocks": "3968", "process_user_time": 2.982187}
+[0m23:43:29.066341 [debug] [MainThread]: Command `dbt run` succeeded at 23:43:29.066251 after 6.60 seconds
+[0m23:43:29.066668 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7276566360>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7276565df0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7e7275bccbc0>]}
+[0m23:43:29.067008 [debug] [MainThread]: Flushing usage events
+[0m23:43:29.595983 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:43:56.985422 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce334e97d10>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce334d1e480>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3345770e0>]}
+
+
+============================== 23:43:56.987805 | e37f2e0e-cf91-436c-bfe5-bb7eaeae802a ==============================
+[0m23:43:56.987805 [info ] [MainThread]: Running with dbt=1.11.9
+[0m23:43:56.988339 [debug] [MainThread]: running dbt with arguments {'empty': 'False', 'send_anonymous_usage_stats': 'True', 'log_cache_events': 'False', 'version_check': 'True', 'cache_selected_only': 'False', 'warn_error': 'None', 'partial_parse': 'True', 'fail_fast': 'False', 'log_path': '/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/logs', 'introspect': 'True', 'target_path': 'None', 'debug': 'False', 'use_experimental_parser': 'False', 'printer_width': '80', 'no_print': 'None', 'static_parser': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_colors': 'True', 'write_json': 'True', 'invocation_command': 'dbt run -s models/dimensions', 'log_format': 'default', 'quiet': 'False', 'profiles_dir': '/home/matheus/.dbt', 'indirect_selection': 'eager'}
+[0m23:43:57.154544 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m23:43:57.155002 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m23:43:57.155366 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m23:43:57.344083 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce33198f050>]}
+[0m23:43:57.398579 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3327208c0>]}
+[0m23:43:57.399348 [info ] [MainThread]: Registered adapter: snowflake=1.11.4
+[0m23:43:57.523007 [debug] [MainThread]: checksum: f8bb6a62265c70f2530bed05e52c2cee1c1844b101d398a67d5798350ab914c5, vars: {}, profile: , target: , version: 1.11.9
+[0m23:43:57.605770 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m23:43:57.606194 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m23:43:57.606525 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m23:43:57.611580 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.NOVADRIVE.staging
+- models.NOVADRIVE.analises
+- models.NOVADRIVE.dims
+[0m23:43:57.637994 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce333ee8fe0>]}
+[0m23:43:57.703367 [debug] [MainThread]: Wrote artifact WritableManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/manifest.json
+[0m23:43:57.705026 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/semantic_manifest.json
+[0m23:43:57.711683 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3317f0980>]}
+[0m23:43:57.712129 [info ] [MainThread]: Found 19 models, 7 sources, 526 macros
+[0m23:43:57.712484 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3317f3320>]}
+[0m23:43:57.714710 [info ] [MainThread]: 
+[0m23:43:57.715082 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:43:57.715399 [info ] [MainThread]: 
+[0m23:43:57.715849 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:43:57.719630 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_NOVADRIVE'
+[0m23:43:57.756652 [debug] [ThreadPool]: Using snowflake connection "list_NOVADRIVE"
+[0m23:43:57.757124 [debug] [ThreadPool]: On list_NOVADRIVE: show terse schemas in database NOVADRIVE
+    limit 10000
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "connection_name": "list_NOVADRIVE"} */
+[0m23:43:57.757462 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:43:58.984082 [debug] [ThreadPool]: SQL status: SUCCESS 3 in 1.227 seconds
+[0m23:43:58.986958 [debug] [ThreadPool]: Re-using an available connection from the pool (formerly list_NOVADRIVE, now list_NOVADRIVE_stage)
+[0m23:43:58.997646 [debug] [ThreadPool]: Using snowflake connection "list_NOVADRIVE_stage"
+[0m23:43:58.998073 [debug] [ThreadPool]: On list_NOVADRIVE_stage: show objects in NOVADRIVE.stage
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "connection_name": "list_NOVADRIVE_stage"} */;
+[0m23:43:59.148024 [debug] [ThreadPool]: SQL status: SUCCESS 26 in 0.150 seconds
+[0m23:43:59.154385 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce33248e060>]}
+[0m23:43:59.156784 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.dim_cidades
+[0m23:43:59.157257 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.dim_clientes
+[0m23:43:59.157736 [debug] [Thread-4 (]: Began running node model.NOVADRIVE.dim_concessionarias
+[0m23:43:59.158563 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.dim_estados
+[0m23:43:59.158216 [info ] [Thread-2 (]: 1 of 6 START sql table model stage.dim_cidades ................................. [RUN]
+[0m23:43:59.159192 [info ] [Thread-3 (]: 2 of 6 START sql table model stage.dim_clientes ................................ [RUN]
+[0m23:43:59.159789 [info ] [Thread-4 (]: 3 of 6 START sql table model stage.dim_concessionarias ......................... [RUN]
+[0m23:43:59.160284 [info ] [Thread-5 (]: 4 of 6 START sql table model stage.dim_estados ................................. [RUN]
+[0m23:43:59.160738 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_NOVADRIVE_stage, now model.NOVADRIVE.dim_cidades)
+[0m23:43:59.162474 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.NOVADRIVE.dim_clientes'
+[0m23:43:59.162998 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.NOVADRIVE.dim_concessionarias'
+[0m23:43:59.163617 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.NOVADRIVE.dim_estados'
+[0m23:43:59.164139 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.dim_cidades
+[0m23:43:59.164564 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.dim_clientes
+[0m23:43:59.165112 [debug] [Thread-4 (]: Began compiling node model.NOVADRIVE.dim_concessionarias
+[0m23:43:59.165494 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.dim_estados
+[0m23:43:59.172066 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.dim_cidades"
+[0m23:43:59.174665 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.dim_clientes"
+[0m23:43:59.177555 [debug] [Thread-4 (]: Writing injected SQL for node "model.NOVADRIVE.dim_concessionarias"
+[0m23:43:59.180739 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.dim_estados"
+[0m23:43:59.181808 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.dim_cidades
+[0m23:43:59.182312 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.dim_clientes
+[0m23:43:59.182765 [debug] [Thread-4 (]: Began executing node model.NOVADRIVE.dim_concessionarias
+[0m23:43:59.204091 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.dim_estados
+[0m23:43:59.219369 [debug] [Thread-2 (]: Writing runtime sql for node "model.NOVADRIVE.dim_cidades"
+[0m23:43:59.223365 [debug] [Thread-3 (]: Writing runtime sql for node "model.NOVADRIVE.dim_clientes"
+[0m23:43:59.226046 [debug] [Thread-4 (]: Writing runtime sql for node "model.NOVADRIVE.dim_concessionarias"
+[0m23:43:59.228444 [debug] [Thread-5 (]: Writing runtime sql for node "model.NOVADRIVE.dim_estados"
+[0m23:43:59.229579 [debug] [Thread-2 (]: Using snowflake connection "model.NOVADRIVE.dim_cidades"
+[0m23:43:59.230210 [debug] [Thread-3 (]: Using snowflake connection "model.NOVADRIVE.dim_clientes"
+[0m23:43:59.230838 [debug] [Thread-4 (]: Using snowflake connection "model.NOVADRIVE.dim_concessionarias"
+[0m23:43:59.231264 [debug] [Thread-2 (]: On model.NOVADRIVE.dim_cidades: create or replace transient table NOVADRIVE.stage.dim_cidades
+    
+    
+    
+    as (
+SELECT
+    id_cidades AS cidade_id,
+    nome_cidade,
+    id_estados AS estado_id,
+    data_inclusao,
+    data_atualizacao
+FROM NOVADRIVE.stage.stg_cidades
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.dim_cidades"} */;
+[0m23:43:59.231778 [debug] [Thread-3 (]: On model.NOVADRIVE.dim_clientes: create or replace transient table NOVADRIVE.stage.dim_clientes
+    
+    
+    
+    as (
+SELECT
+    id_clientes AS cliente_id,
+    cliente AS nome_cliente,
+    endereco,
+    id_concessionarias AS concessionaria_id,
+    data_inclusao,
+    data_atualizacao
+FROM NOVADRIVE.stage.stg_clientes
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.dim_clientes"} */;
+[0m23:43:59.232468 [debug] [Thread-5 (]: Using snowflake connection "model.NOVADRIVE.dim_estados"
+[0m23:43:59.232812 [debug] [Thread-4 (]: On model.NOVADRIVE.dim_concessionarias: create or replace transient table NOVADRIVE.stage.dim_concessionarias
+    
+    
+    
+    as (
+SELECT
+    id_concessionarias AS concessionaria_id,
+    nome_concessionaria,
+    id_cidades AS cidade_id,
+    data_inclusao,
+    data_atualizacao
+FROM NOVADRIVE.stage.stg_concessionarias
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.dim_concessionarias"} */;
+[0m23:43:59.233684 [debug] [Thread-3 (]: Opening a new connection, currently in state init
+[0m23:43:59.234712 [debug] [Thread-5 (]: On model.NOVADRIVE.dim_estados: create or replace transient table NOVADRIVE.stage.dim_estados
+    
+    
+    
+    as (
+SELECT
+    id_estados AS estado_id,
+    estado AS nome_estado,
+    sigla,
+    data_inclusao,
+    data_atualizacao
+FROM NOVADRIVE.stage.stg_estados
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.dim_estados"} */;
+[0m23:43:59.235172 [debug] [Thread-4 (]: Opening a new connection, currently in state init
+[0m23:43:59.235806 [debug] [Thread-5 (]: Opening a new connection, currently in state init
+[0m23:44:00.185196 [debug] [Thread-2 (]: SQL status: SUCCESS 27 in 0.952 seconds
+[0m23:44:00.204493 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce33065f170>]}
+[0m23:44:00.205052 [info ] [Thread-2 (]: 1 of 6 OK created sql table model stage.dim_cidades ............................ [[32mSUCCESS 27[0m in 1.04s]
+[0m23:44:00.205626 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.dim_cidades
+[0m23:44:00.206022 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.dim_veiculos
+[0m23:44:00.206503 [info ] [Thread-2 (]: 5 of 6 START sql table model stage.dim_veiculos ................................ [RUN]
+[0m23:44:00.206907 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_cidades, now model.NOVADRIVE.dim_veiculos)
+[0m23:44:00.207279 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.dim_veiculos
+[0m23:44:00.209332 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.dim_veiculos"
+[0m23:44:00.209826 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.dim_veiculos
+[0m23:44:00.211851 [debug] [Thread-2 (]: Writing runtime sql for node "model.NOVADRIVE.dim_veiculos"
+[0m23:44:00.212679 [debug] [Thread-2 (]: Using snowflake connection "model.NOVADRIVE.dim_veiculos"
+[0m23:44:00.213041 [debug] [Thread-2 (]: On model.NOVADRIVE.dim_veiculos: create or replace transient table NOVADRIVE.stage.dim_veiculos
+    
+    
+    
+    as (
+SELECT
+    id_veiculos AS veiculo_id,
+    nome AS nome_veiculo,
+    tipo,
+    valor AS valor_sugerido,
+    data_atualizacao,
+    data_inclusao
+FROM NOVADRIVE.stage.stg_veiculos
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.dim_veiculos"} */;
+[0m23:44:00.494991 [debug] [Thread-3 (]: SQL status: SUCCESS 2527 in 1.261 seconds
+[0m23:44:00.496810 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce33063c800>]}
+[0m23:44:00.497352 [info ] [Thread-3 (]: 2 of 6 OK created sql table model stage.dim_clientes ........................... [[32mSUCCESS 2527[0m in 1.34s]
+[0m23:44:00.497899 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.dim_clientes
+[0m23:44:00.498323 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.dim_vendedores
+[0m23:44:00.498861 [info ] [Thread-3 (]: 6 of 6 START sql table model stage.dim_vendedores .............................. [RUN]
+[0m23:44:00.499301 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_clientes, now model.NOVADRIVE.dim_vendedores)
+[0m23:44:00.499633 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.dim_vendedores
+[0m23:44:00.501761 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.dim_vendedores"
+[0m23:44:00.502259 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.dim_vendedores
+[0m23:44:00.504160 [debug] [Thread-3 (]: Writing runtime sql for node "model.NOVADRIVE.dim_vendedores"
+[0m23:44:00.504991 [debug] [Thread-3 (]: Using snowflake connection "model.NOVADRIVE.dim_vendedores"
+[0m23:44:00.505339 [debug] [Thread-3 (]: On model.NOVADRIVE.dim_vendedores: create or replace transient table NOVADRIVE.stage.dim_vendedores
+    
+    
+    
+    as (
+SELECT
+    id_vendedores AS vendedor_id,
+    nome_vendedor,
+    id_concessionarias AS concessionaria_id,
+    data_inclusao,
+    data_atualizacao
+FROM NOVADRIVE.stage.stg_vendedores
+    )
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "node_id": "model.NOVADRIVE.dim_vendedores"} */;
+[0m23:44:00.999879 [debug] [Thread-2 (]: SQL status: SUCCESS 8 in 0.786 seconds
+[0m23:44:01.001490 [debug] [Thread-2 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3306cfe30>]}
+[0m23:44:01.002038 [info ] [Thread-2 (]: 5 of 6 OK created sql table model stage.dim_veiculos ........................... [[32mSUCCESS 8[0m in 0.79s]
+[0m23:44:01.002542 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.dim_veiculos
+[0m23:44:01.259339 [debug] [Thread-4 (]: SQL status: SUCCESS 29 in 2.024 seconds
+[0m23:44:01.261085 [debug] [Thread-4 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3306057c0>]}
+[0m23:44:01.261670 [info ] [Thread-4 (]: 3 of 6 OK created sql table model stage.dim_concessionarias .................... [[32mSUCCESS 29[0m in 2.10s]
+[0m23:44:01.262230 [debug] [Thread-4 (]: Finished running node model.NOVADRIVE.dim_concessionarias
+[0m23:44:01.313642 [debug] [Thread-5 (]: SQL status: SUCCESS 27 in 2.078 seconds
+[0m23:44:01.315232 [debug] [Thread-5 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3306ca240>]}
+[0m23:44:01.315756 [info ] [Thread-5 (]: 4 of 6 OK created sql table model stage.dim_estados ............................ [[32mSUCCESS 27[0m in 2.15s]
+[0m23:44:01.316254 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.dim_estados
+[0m23:44:01.359974 [debug] [Thread-3 (]: SQL status: SUCCESS 53 in 0.854 seconds
+[0m23:44:01.361639 [debug] [Thread-3 (]: Sending event: {'category': 'dbt', 'action': 'run_model', 'label': 'e37f2e0e-cf91-436c-bfe5-bb7eaeae802a', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce330fecda0>]}
+[0m23:44:01.362165 [info ] [Thread-3 (]: 6 of 6 OK created sql table model stage.dim_vendedores ......................... [[32mSUCCESS 53[0m in 0.86s]
+[0m23:44:01.362655 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.dim_vendedores
+[0m23:44:01.363771 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:44:01.364087 [debug] [MainThread]: Connection 'model.NOVADRIVE.dim_veiculos' was left open.
+[0m23:44:01.364381 [debug] [MainThread]: On model.NOVADRIVE.dim_veiculos: Close
+[0m23:44:01.546080 [debug] [MainThread]: Connection 'model.NOVADRIVE.dim_vendedores' was left open.
+[0m23:44:01.546485 [debug] [MainThread]: On model.NOVADRIVE.dim_vendedores: Close
+[0m23:44:01.715498 [debug] [MainThread]: Connection 'model.NOVADRIVE.dim_concessionarias' was left open.
+[0m23:44:01.715910 [debug] [MainThread]: On model.NOVADRIVE.dim_concessionarias: Close
+[0m23:44:01.887278 [debug] [MainThread]: Connection 'model.NOVADRIVE.dim_estados' was left open.
+[0m23:44:01.887684 [debug] [MainThread]: On model.NOVADRIVE.dim_estados: Close
+[0m23:44:02.071576 [info ] [MainThread]: 
+[0m23:44:02.072025 [info ] [MainThread]: Finished running 6 table models in 0 hours 0 minutes and 4.36 seconds (4.36s).
+[0m23:44:02.073145 [debug] [MainThread]: Command end result
+[0m23:44:02.100449 [debug] [MainThread]: Wrote artifact WritableManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/manifest.json
+[0m23:44:02.102034 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/semantic_manifest.json
+[0m23:44:02.106688 [debug] [MainThread]: Wrote artifact RunExecutionResult to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/run_results.json
+[0m23:44:02.107026 [info ] [MainThread]: 
+[0m23:44:02.107376 [info ] [MainThread]: [32mCompleted successfully[0m
+[0m23:44:02.107681 [info ] [MainThread]: 
+[0m23:44:02.108010 [info ] [MainThread]: Done. PASS=6 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=6
+[0m23:44:02.108745 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": true, "command_wall_clock_time": 5.171023, "process_in_blocks": "0", "process_kernel_time": 0.322151, "process_mem_max_rss": "159868", "process_out_blocks": "2768", "process_user_time": 2.026953}
+[0m23:44:02.109158 [debug] [MainThread]: Command `dbt run` succeeded at 23:44:02.109084 after 5.17 seconds
+[0m23:44:02.109486 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce336a234a0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce3347fcaa0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7ce333ee82f0>]}
+[0m23:44:02.109819 [debug] [MainThread]: Flushing usage events
+[0m23:44:02.726529 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:46:24.264214 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cfa5b6e0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cd93fbc0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cfb4b8f0>]}
+
+
+============================== 23:46:24.266978 | 273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87 ==============================
+[0m23:46:24.266978 [info ] [MainThread]: Running with dbt=1.11.9
+[0m23:46:24.267513 [debug] [MainThread]: running dbt with arguments {'version_check': 'True', 'log_format': 'default', 'empty': 'None', 'profiles_dir': '/home/matheus/.dbt', 'partial_parse': 'True', 'introspect': 'True', 'invocation_command': 'dbt docs generate', 'no_print': 'None', 'quiet': 'False', 'indirect_selection': 'eager', 'target_path': 'None', 'fail_fast': 'False', 'printer_width': '80', 'cache_selected_only': 'False', 'log_path': '/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/logs', 'log_cache_events': 'False', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'use_experimental_parser': 'False', 'use_colors': 'True', 'static_parser': 'True', 'warn_error': 'None', 'send_anonymous_usage_stats': 'True', 'debug': 'False', 'write_json': 'True'}
+[0m23:46:24.443497 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m23:46:24.443984 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m23:46:24.444327 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m23:46:24.651450 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cb4a1d30>]}
+[0m23:46:24.705882 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cdce4aa0>]}
+[0m23:46:24.706664 [info ] [MainThread]: Registered adapter: snowflake=1.11.4
+[0m23:46:24.841577 [debug] [MainThread]: checksum: f8bb6a62265c70f2530bed05e52c2cee1c1844b101d398a67d5798350ab914c5, vars: {}, profile: , target: , version: 1.11.9
+[0m23:46:24.929084 [debug] [MainThread]: Partial parsing enabled: 0 files deleted, 0 files added, 0 files changed.
+[0m23:46:24.929745 [debug] [MainThread]: Nothing changed, skipping partial parsing.
+[0m23:46:24.930215 [debug] [MainThread]: Partial parsing enabled, no changes found, skipping parsing
+[0m23:46:24.935785 [warn ] [MainThread]: [[33mWARNING[0m]: Configuration paths exist in your dbt_project.yml file which do not apply to any resources.
+There are 3 unused configuration paths:
+- models.NOVADRIVE.staging
+- models.NOVADRIVE.analises
+- models.NOVADRIVE.dims
+[0m23:46:24.962489 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'load_project', 'label': '273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44ca68b1d0>]}
+[0m23:46:24.971596 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'resource_counts', 'label': '273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44ca6580e0>]}
+[0m23:46:24.972118 [info ] [MainThread]: Found 19 models, 7 sources, 526 macros
+[0m23:46:24.972492 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44ccf302c0>]}
+[0m23:46:24.974415 [info ] [MainThread]: 
+[0m23:46:24.974777 [info ] [MainThread]: Concurrency: 4 threads (target='dev')
+[0m23:46:24.975100 [info ] [MainThread]: 
+[0m23:46:24.975551 [debug] [MainThread]: Acquiring new snowflake connection 'master'
+[0m23:46:24.979890 [debug] [ThreadPool]: Acquiring new snowflake connection 'list_NOVADRIVE_stage'
+[0m23:46:25.023904 [debug] [ThreadPool]: Using snowflake connection "list_NOVADRIVE_stage"
+[0m23:46:25.024392 [debug] [ThreadPool]: On list_NOVADRIVE_stage: show objects in NOVADRIVE.stage
+    limit 10000
+    
+
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "connection_name": "list_NOVADRIVE_stage"} */;
+[0m23:46:25.024707 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:46:26.400716 [debug] [ThreadPool]: SQL status: SUCCESS 26 in 1.376 seconds
+[0m23:46:26.405768 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'runnable_timing', 'label': '273d5b2c-a0c8-4e8d-93b1-5e8abbea8c87', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44ca75f950>]}
+[0m23:46:26.408156 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.stg_cidades
+[0m23:46:26.408552 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.stg_clientes
+[0m23:46:26.408996 [debug] [Thread-4 (]: Began running node model.NOVADRIVE.stg_concessionarias
+[0m23:46:26.409418 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly list_NOVADRIVE_stage, now model.NOVADRIVE.stg_cidades)
+[0m23:46:26.409793 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.stg_estados
+[0m23:46:26.410321 [debug] [Thread-3 (]: Acquiring new snowflake connection 'model.NOVADRIVE.stg_clientes'
+[0m23:46:26.410746 [debug] [Thread-4 (]: Acquiring new snowflake connection 'model.NOVADRIVE.stg_concessionarias'
+[0m23:46:26.411170 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.stg_cidades
+[0m23:46:26.411643 [debug] [Thread-5 (]: Acquiring new snowflake connection 'model.NOVADRIVE.stg_estados'
+[0m23:46:26.412009 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.stg_clientes
+[0m23:46:26.412450 [debug] [Thread-4 (]: Began compiling node model.NOVADRIVE.stg_concessionarias
+[0m23:46:26.418947 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.stg_cidades"
+[0m23:46:26.419401 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.stg_estados
+[0m23:46:26.421713 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.stg_clientes"
+[0m23:46:26.424908 [debug] [Thread-4 (]: Writing injected SQL for node "model.NOVADRIVE.stg_concessionarias"
+[0m23:46:26.427467 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.stg_estados"
+[0m23:46:26.428083 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.stg_cidades
+[0m23:46:26.428701 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.stg_clientes
+[0m23:46:26.429288 [debug] [Thread-4 (]: Began executing node model.NOVADRIVE.stg_concessionarias
+[0m23:46:26.429916 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.stg_cidades
+[0m23:46:26.430328 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.stg_estados
+[0m23:46:26.430861 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.stg_clientes
+[0m23:46:26.431432 [debug] [Thread-4 (]: Finished running node model.NOVADRIVE.stg_concessionarias
+[0m23:46:26.431825 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.stg_veiculos
+[0m23:46:26.432555 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.stg_estados
+[0m23:46:26.433051 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.stg_vendas
+[0m23:46:26.433516 [debug] [Thread-4 (]: Began running node model.NOVADRIVE.stg_vendedores
+[0m23:46:26.433949 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_cidades, now model.NOVADRIVE.stg_veiculos)
+[0m23:46:26.434369 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.dim_cidades
+[0m23:46:26.434851 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_clientes, now model.NOVADRIVE.stg_vendas)
+[0m23:46:26.435354 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_concessionarias, now model.NOVADRIVE.stg_vendedores)
+[0m23:46:26.435727 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.stg_veiculos
+[0m23:46:26.436103 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_estados, now model.NOVADRIVE.dim_cidades)
+[0m23:46:26.436499 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.stg_vendas
+[0m23:46:26.436894 [debug] [Thread-4 (]: Began compiling node model.NOVADRIVE.stg_vendedores
+[0m23:46:26.439462 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.stg_veiculos"
+[0m23:46:26.439894 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.dim_cidades
+[0m23:46:26.442353 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.stg_vendas"
+[0m23:46:26.445800 [debug] [Thread-4 (]: Writing injected SQL for node "model.NOVADRIVE.stg_vendedores"
+[0m23:46:26.448290 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.dim_cidades"
+[0m23:46:26.449112 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.stg_veiculos
+[0m23:46:26.449794 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.stg_vendas
+[0m23:46:26.450672 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.stg_veiculos
+[0m23:46:26.451005 [debug] [Thread-4 (]: Began executing node model.NOVADRIVE.stg_vendedores
+[0m23:46:26.451634 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.stg_vendas
+[0m23:46:26.451996 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.dim_cidades
+[0m23:46:26.452422 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.dim_clientes
+[0m23:46:26.453165 [debug] [Thread-4 (]: Finished running node model.NOVADRIVE.stg_vendedores
+[0m23:46:26.453655 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.dim_concessionarias
+[0m23:46:26.454251 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.dim_cidades
+[0m23:46:26.454637 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_veiculos, now model.NOVADRIVE.dim_clientes)
+[0m23:46:26.455048 [debug] [Thread-4 (]: Began running node model.NOVADRIVE.dim_estados
+[0m23:46:26.455566 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_vendas, now model.NOVADRIVE.dim_concessionarias)
+[0m23:46:26.456008 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.dim_veiculos
+[0m23:46:26.456422 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.dim_clientes
+[0m23:46:26.456789 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.stg_vendedores, now model.NOVADRIVE.dim_estados)
+[0m23:46:26.457157 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.dim_concessionarias
+[0m23:46:26.457563 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_cidades, now model.NOVADRIVE.dim_veiculos)
+[0m23:46:26.459952 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.dim_clientes"
+[0m23:46:26.460394 [debug] [Thread-4 (]: Began compiling node model.NOVADRIVE.dim_estados
+[0m23:46:26.462651 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.dim_concessionarias"
+[0m23:46:26.463093 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.dim_veiculos
+[0m23:46:26.466045 [debug] [Thread-4 (]: Writing injected SQL for node "model.NOVADRIVE.dim_estados"
+[0m23:46:26.466663 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.dim_clientes
+[0m23:46:26.469122 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.dim_veiculos"
+[0m23:46:26.469555 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.dim_concessionarias
+[0m23:46:26.470388 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.dim_clientes
+[0m23:46:26.470894 [debug] [Thread-4 (]: Began executing node model.NOVADRIVE.dim_estados
+[0m23:46:26.471559 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.dim_concessionarias
+[0m23:46:26.471979 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.dim_vendedores
+[0m23:46:26.472481 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.dim_veiculos
+[0m23:46:26.473091 [debug] [Thread-4 (]: Finished running node model.NOVADRIVE.dim_estados
+[0m23:46:26.473549 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_clientes, now model.NOVADRIVE.dim_vendedores)
+[0m23:46:26.474155 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.dim_veiculos
+[0m23:46:26.474797 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.dim_vendedores
+[0m23:46:26.478795 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.dim_vendedores"
+[0m23:46:26.479466 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.dim_vendedores
+[0m23:46:26.480073 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.dim_vendedores
+[0m23:46:26.480715 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.fct_vendas
+[0m23:46:26.481142 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_concessionarias, now model.NOVADRIVE.fct_vendas)
+[0m23:46:26.481493 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.fct_vendas
+[0m23:46:26.490602 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.fct_vendas"
+[0m23:46:26.491284 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.fct_vendas
+[0m23:46:26.491921 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.fct_vendas
+[0m23:46:26.492679 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:46:26.493114 [debug] [Thread-2 (]: Began running node model.NOVADRIVE.analise_vendas_temporal
+[0m23:46:26.493511 [debug] [Thread-4 (]: Began running node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:46:26.493864 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_veiculos, now model.NOVADRIVE.analise_vendas_concessionaria)
+[0m23:46:26.494250 [debug] [Thread-3 (]: Began running node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:46:26.494630 [debug] [Thread-2 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_vendedores, now model.NOVADRIVE.analise_vendas_temporal)
+[0m23:46:26.495001 [debug] [Thread-4 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.dim_estados, now model.NOVADRIVE.analise_vendas_veiculo)
+[0m23:46:26.495365 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:46:26.495732 [debug] [Thread-3 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.fct_vendas, now model.NOVADRIVE.analise_vendas_vendedor)
+[0m23:46:26.496123 [debug] [Thread-2 (]: Began compiling node model.NOVADRIVE.analise_vendas_temporal
+[0m23:46:26.496503 [debug] [Thread-4 (]: Began compiling node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:46:26.499521 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_concessionaria"
+[0m23:46:26.500004 [debug] [Thread-3 (]: Began compiling node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:46:26.503309 [debug] [Thread-2 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_temporal"
+[0m23:46:26.506386 [debug] [Thread-4 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_veiculo"
+[0m23:46:26.510777 [debug] [Thread-3 (]: Writing injected SQL for node "model.NOVADRIVE.analise_vendas_vendedor"
+[0m23:46:26.511373 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:46:26.511999 [debug] [Thread-2 (]: Began executing node model.NOVADRIVE.analise_vendas_temporal
+[0m23:46:26.512510 [debug] [Thread-4 (]: Began executing node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:46:26.513186 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.analise_vendas_concessionaria
+[0m23:46:26.513611 [debug] [Thread-3 (]: Began executing node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:46:26.514181 [debug] [Thread-2 (]: Finished running node model.NOVADRIVE.analise_vendas_temporal
+[0m23:46:26.514838 [debug] [Thread-4 (]: Finished running node model.NOVADRIVE.analise_vendas_veiculo
+[0m23:46:26.515344 [debug] [Thread-5 (]: Began running node model.NOVADRIVE.test
+[0m23:46:26.516003 [debug] [Thread-3 (]: Finished running node model.NOVADRIVE.analise_vendas_vendedor
+[0m23:46:26.516616 [debug] [Thread-5 (]: Re-using an available connection from the pool (formerly model.NOVADRIVE.analise_vendas_concessionaria, now model.NOVADRIVE.test)
+[0m23:46:26.517052 [debug] [Thread-5 (]: Began compiling node model.NOVADRIVE.test
+[0m23:46:26.519363 [debug] [Thread-5 (]: Writing injected SQL for node "model.NOVADRIVE.test"
+[0m23:46:26.519866 [debug] [Thread-5 (]: Began executing node model.NOVADRIVE.test
+[0m23:46:26.520598 [debug] [Thread-5 (]: Finished running node model.NOVADRIVE.test
+[0m23:46:26.521645 [debug] [MainThread]: Connection 'master' was properly closed.
+[0m23:46:26.521994 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_temporal' was left open.
+[0m23:46:26.522331 [debug] [MainThread]: On model.NOVADRIVE.analise_vendas_temporal: Close
+[0m23:46:26.681717 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_vendedor' was properly closed.
+[0m23:46:26.682126 [debug] [MainThread]: Connection 'model.NOVADRIVE.analise_vendas_veiculo' was properly closed.
+[0m23:46:26.682413 [debug] [MainThread]: Connection 'model.NOVADRIVE.test' was properly closed.
+[0m23:46:26.684486 [debug] [MainThread]: Command end result
+[0m23:46:26.751301 [debug] [MainThread]: Wrote artifact WritableManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/manifest.json
+[0m23:46:26.753079 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/semantic_manifest.json
+[0m23:46:26.758704 [debug] [MainThread]: Wrote artifact RunExecutionResult to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/run_results.json
+[0m23:46:26.762449 [debug] [MainThread]: Acquiring new snowflake connection 'generate_catalog'
+[0m23:46:26.762763 [info ] [MainThread]: Building catalog
+[0m23:46:26.772799 [debug] [ThreadPool]: Acquiring new snowflake connection 'NOVADRIVE.information_schema'
+[0m23:46:26.790978 [debug] [ThreadPool]: Using snowflake connection "NOVADRIVE.information_schema"
+[0m23:46:26.791761 [debug] [ThreadPool]: On NOVADRIVE.information_schema: with tables as (
+            select
+        table_catalog as "table_database",
+        table_schema as "table_schema",
+        table_name as "table_name",
+        case
+            when is_dynamic = 'YES' and table_type = 'BASE TABLE' THEN 'DYNAMIC TABLE'
+            else table_type
+        end as "table_type",
+        comment as "table_comment",
+
+        -- note: this is the _role_ that owns the table
+        table_owner as "table_owner",
+
+        'Clustering Key' as "stats:clustering_key:label",
+        clustering_key as "stats:clustering_key:value",
+        'The key used to cluster this table' as "stats:clustering_key:description",
+        (clustering_key is not null) as "stats:clustering_key:include",
+
+        'Row Count' as "stats:row_count:label",
+        row_count as "stats:row_count:value",
+        'An approximate count of rows in this table' as "stats:row_count:description",
+        (row_count is not null) as "stats:row_count:include",
+
+        'Approximate Size' as "stats:bytes:label",
+        bytes as "stats:bytes:value",
+        'Approximate size of the table as reported by Snowflake' as "stats:bytes:description",
+        (bytes is not null) as "stats:bytes:include",
+
+        'Last Modified' as "stats:last_modified:label",
+        to_varchar(convert_timezone('UTC', last_altered), 'yyyy-mm-dd HH24:MI'||'UTC') as "stats:last_modified:value",
+        'The timestamp for last update/change' as "stats:last_modified:description",
+        (last_altered is not null and table_type='BASE TABLE') as "stats:last_modified:include"
+    from NOVADRIVE.INFORMATION_SCHEMA.tables
+            where (
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_estados' and upper("table_name") = upper('dim_estados')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_veiculo' and upper("table_name") = upper('analise_vendas_veiculo')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_cidades' and upper("table_name") = upper('stg_cidades')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_concessionaria' and upper("table_name") = upper('analise_vendas_concessionaria')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_concessionarias' and upper("table_name") = upper('dim_concessionarias')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_clientes' and upper("table_name") = upper('stg_clientes')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_clientes' and upper("table_name") = upper('dim_clientes')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'concessionarias' and upper("table_name") = upper('concessionarias')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_vendedores' and upper("table_name") = upper('dim_vendedores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'cidades' and upper("table_name") = upper('cidades')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'test' and upper("table_name") = upper('test')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'estados' and upper("table_name") = upper('estados')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'vendedores' and upper("table_name") = upper('vendedores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'vendas' and upper("table_name") = upper('vendas')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_temporal' and upper("table_name") = upper('analise_vendas_temporal')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'clientes' and upper("table_name") = upper('clientes')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_vendedor' and upper("table_name") = upper('analise_vendas_vendedor')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_concessionarias' and upper("table_name") = upper('stg_concessionarias')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_vendedores' and upper("table_name") = upper('stg_vendedores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_veiculos' and upper("table_name") = upper('stg_veiculos')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'fct_vendas' and upper("table_name") = upper('fct_vendas')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_cidades' and upper("table_name") = upper('dim_cidades')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'veiculos' and upper("table_name") = upper('veiculos')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_vendas' and upper("table_name") = upper('stg_vendas')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_estados' and upper("table_name") = upper('stg_estados')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_veiculos' and upper("table_name") = upper('dim_veiculos')
+
+                )
+            )
+        ),
+        columns as (
+            select
+        table_catalog as "table_database",
+        table_schema as "table_schema",
+        table_name as "table_name",
+
+        column_name as "column_name",
+        ordinal_position as "column_index",
+        data_type as "column_type",
+        comment as "column_comment"
+    from NOVADRIVE.INFORMATION_SCHEMA.columns
+            where (
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_estados' and upper("table_name") = upper('dim_estados')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_veiculo' and upper("table_name") = upper('analise_vendas_veiculo')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_cidades' and upper("table_name") = upper('stg_cidades')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_concessionaria' and upper("table_name") = upper('analise_vendas_concessionaria')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_concessionarias' and upper("table_name") = upper('dim_concessionarias')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_clientes' and upper("table_name") = upper('stg_clientes')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_clientes' and upper("table_name") = upper('dim_clientes')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'concessionarias' and upper("table_name") = upper('concessionarias')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_vendedores' and upper("table_name") = upper('dim_vendedores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'cidades' and upper("table_name") = upper('cidades')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'test' and upper("table_name") = upper('test')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'estados' and upper("table_name") = upper('estados')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'vendedores' and upper("table_name") = upper('vendedores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'vendas' and upper("table_name") = upper('vendas')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_temporal' and upper("table_name") = upper('analise_vendas_temporal')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'clientes' and upper("table_name") = upper('clientes')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'analise_vendas_vendedor' and upper("table_name") = upper('analise_vendas_vendedor')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_concessionarias' and upper("table_name") = upper('stg_concessionarias')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_vendedores' and upper("table_name") = upper('stg_vendedores')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_veiculos' and upper("table_name") = upper('stg_veiculos')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'fct_vendas' and upper("table_name") = upper('fct_vendas')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_cidades' and upper("table_name") = upper('dim_cidades')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'STAGE' and upper("table_schema") = upper('STAGE')
+
+                    and 
+    "table_name" ilike 'veiculos' and upper("table_name") = upper('veiculos')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_vendas' and upper("table_name") = upper('stg_vendas')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'stg_estados' and upper("table_name") = upper('stg_estados')
+
+                )
+             or 
+                (
+                    
+    "table_schema" ilike 'stage' and upper("table_schema") = upper('stage')
+
+                    and 
+    "table_name" ilike 'dim_veiculos' and upper("table_name") = upper('dim_veiculos')
+
+                )
+            )
+        )
+        select *
+    from tables
+    join columns using ("table_database", "table_schema", "table_name")
+    order by "column_index"
+/* {"app": "dbt", "dbt_version": "1.11.9", "profile_name": "dbt_transformations", "target_name": "dev", "connection_name": "NOVADRIVE.information_schema"} */
+[0m23:46:26.792479 [debug] [ThreadPool]: Opening a new connection, currently in state init
+[0m23:46:36.521728 [debug] [ThreadPool]: SQL status: SUCCESS 150 in 9.729 seconds
+[0m23:46:36.561803 [debug] [MainThread]: Wrote artifact CatalogArtifact to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/catalog.json
+[0m23:46:36.584440 [debug] [MainThread]: Wrote artifact WritableManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/manifest.json
+[0m23:46:36.586419 [debug] [MainThread]: Wrote artifact SemanticManifest to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/semantic_manifest.json
+[0m23:46:36.586834 [info ] [MainThread]: Catalog written to /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/target/catalog.json
+[0m23:46:36.588082 [debug] [MainThread]: Resource report: {"command_name": "generate", "command_success": true, "command_wall_clock_time": 12.375026, "process_in_blocks": "3600", "process_kernel_time": 0.31261, "process_mem_max_rss": "156832", "process_out_blocks": "6536", "process_user_time": 2.151321}
+[0m23:46:36.588556 [debug] [MainThread]: Command `dbt docs generate` succeeded at 23:46:36.588478 after 12.38 seconds
+[0m23:46:36.588883 [debug] [MainThread]: Connection 'generate_catalog' was properly closed.
+[0m23:46:36.589192 [debug] [MainThread]: Connection 'NOVADRIVE.information_schema' was left open.
+[0m23:46:36.589487 [debug] [MainThread]: On NOVADRIVE.information_schema: Close
+[0m23:46:36.758969 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cdcb0110>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44cb487e60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7a44ca0f8da0>]}
+[0m23:46:36.759458 [debug] [MainThread]: Flushing usage events
+[0m23:46:37.275797 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:49:20.808723 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd61240dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd62aaed80>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd60f2c8c0>]}
+
+
+============================== 23:49:20.811079 | 606fe4d0-bacf-4903-99ca-312e3902a579 ==============================
+[0m23:49:20.811079 [info ] [MainThread]: Running with dbt=1.11.9
+[0m23:49:20.811672 [debug] [MainThread]: running dbt with arguments {'log_path': '/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_transformations/logs', 'use_colors': 'True', 'send_anonymous_usage_stats': 'True', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'warn_error': 'None', 'no_print': 'None', 'empty': 'None', 'use_experimental_parser': 'False', 'debug': 'False', 'version_check': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'quiet': 'False', 'invocation_command': 'dbt docs serve', 'log_format': 'default', 'write_json': 'True', 'static_parser': 'True', 'target_path': 'None', 'printer_width': '80', 'fail_fast': 'False', 'introspect': 'True', 'log_cache_events': 'False', 'profiles_dir': '/home/matheus/.dbt', 'partial_parse': 'True'}
+[0m23:49:20.981638 [debug] [MainThread]: Snowflake adapter: Setting snowflake.connector to ERROR (file logging only)
+[0m23:49:20.982097 [debug] [MainThread]: Snowflake adapter: Setting botocore to ERROR (file logging only)
+[0m23:49:20.982447 [debug] [MainThread]: Snowflake adapter: Setting boto3 to ERROR (file logging only)
+[0m23:49:21.170102 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'project_id', 'label': '606fe4d0-bacf-4903-99ca-312e3902a579', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd5f0d30b0>]}
+[0m23:49:21.221779 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'adapter_info', 'label': '606fe4d0-bacf-4903-99ca-312e3902a579', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd5e00c980>]}
+[0m23:49:21.311248 [error] [MainThread]: Encountered an error:
+[Errno 98] Address already in use
+[0m23:49:21.314232 [error] [MainThread]: Traceback (most recent call last):
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 182, in wrapper
+    result, success = func(*args, **kwargs)
+                      ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 128, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 276, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 321, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/cli/requires.py", line 368, in wrapper
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/cli/main.py", line 309, in docs_serve
+    results = task.run()
+              ^^^^^^^^^^
+  File "/home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/.venv/lib/python3.12/site-packages/dbt/task/docs/serve.py", line 24, in run
+    with socketserver.TCPServer((host, port), SimpleHTTPRequestHandler) as httpd:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/socketserver.py", line 457, in __init__
+    self.server_bind()
+  File "/usr/lib/python3.12/socketserver.py", line 473, in server_bind
+    self.socket.bind(self.server_address)
+OSError: [Errno 98] Address already in use
+
+[0m23:49:21.316034 [debug] [MainThread]: Resource report: {"command_name": "serve", "command_success": false, "command_wall_clock_time": 0.554269, "process_in_blocks": "256", "process_kernel_time": 0.187199, "process_mem_max_rss": "132852", "process_out_blocks": "3568", "process_user_time": 1.434527}
+[0m23:49:21.317591 [debug] [MainThread]: Command `dbt docs serve` failed at 23:49:21.317359 after 0.56 seconds
+[0m23:49:21.318346 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd64b23dd0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd5dc6dbb0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x73cd5e0f3ec0>]}
+[0m23:49:21.319082 [debug] [MainThread]: Flushing usage events
+[0m23:49:21.848029 [debug] [MainThread]: An error was encountered while trying to flush usage events

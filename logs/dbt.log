@@ -217,3 +217,19 @@ Runtime Error
 [0m16:49:03.919327 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f040a156e70>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0408e402c0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7f0408df5760>]}
 [0m16:49:03.919673 [debug] [MainThread]: Flushing usage events
 [0m16:49:04.450122 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m23:43:00.900120 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741224a08ef0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741223f71160>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7412249a7e90>]}
+
+
+============================== 23:43:00.902870 | 1b7330fa-ceac-4388-afde-dee7ad4bc30b ==============================
+[0m23:43:00.902870 [info ] [MainThread]: Running with dbt=1.11.9
+[0m23:43:00.903396 [debug] [MainThread]: running dbt with arguments {'invocation_command': 'dbt run -s models/dims models/analysis', 'target_path': 'None', 'warn_error': 'None', 'static_parser': 'True', 'use_experimental_parser': 'False', 'fail_fast': 'False', 'profiles_dir': '/home/matheus/.dbt', 'partial_parse': 'True', 'introspect': 'True', 'write_json': 'True', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'version_check': 'True', 'printer_width': '80', 'quiet': 'False', 'no_print': 'None', 'use_colors': 'True', 'log_path': 'logs', 'cache_selected_only': 'False', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'empty': 'False', 'debug': 'False', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m23:43:00.903905 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path /home/matheus/Documents/Projeto NOVADRIVE /projeto nova drive/dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m23:43:00.904696 [debug] [MainThread]: Resource report: {"command_name": "run", "command_success": false, "command_wall_clock_time": 0.056157537, "process_in_blocks": "0", "process_kernel_time": 0.155827, "process_mem_max_rss": "103000", "process_out_blocks": "8", "process_user_time": 1.09978}
+[0m23:43:00.905139 [debug] [MainThread]: Command `dbt run` failed at 23:43:00.905057 after 0.06 seconds
+[0m23:43:00.905476 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741223e50980>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x741227fb7e30>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x7412243c9640>]}
+[0m23:43:00.905850 [debug] [MainThread]: Flushing usage events
+[0m23:43:01.430257 [debug] [MainThread]: An error was encountered while trying to flush usage events
