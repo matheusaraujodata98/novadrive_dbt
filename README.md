@@ -17,6 +17,23 @@ Este projeto foi construído com base em um desafio real (inspirado em curso esp
 
 🔗 **Dashboard:** [nova-drive-dashboard](https://novadrivedashboard.streamlit.app/)
 
+---
+
+## 📋 Resumo do Processo ELT
+
+O projeto segue uma arquitetura **ELT moderna** onde os dados fluem através de várias etapas estratégicas:
+
+1. **Extração (E)**: Dados originários do PostgreSQL (sistema transacional da concessionária)
+2. **Carga (L)**: Transferência incremental e escalável para o Snowflake via Apache Airflow
+3. **Transformação (T)**: Modelagem em *Star Schema* utilizando dbt, com camadas Stage, Core e Analytics
+4. **Visualização**: Dashboard interativo em Streamlit com KPIs e análises de negócio em tempo real
+
+A imagem abaixo ilustra toda a infraestrutura e fluxo de dados:
+
+![Nova Drive Architecture](./novadrive_architecture.jpeg)
+
+---
+
 ## 🎯 Arquitetura da Solução e Stack Tecnológica
 
 O fluxo de dados segue a arquitetura **ELT (Extract, Load, Transform)**. As ferramentas que utilizei foram:
